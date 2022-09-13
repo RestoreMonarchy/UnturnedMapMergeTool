@@ -2,24 +2,25 @@
 using System.IO;
 using UnturnedMapMergeTool.Models.Configs;
 
-namespace UnturnedMapMergeTool.Copiers
+namespace UnturnedMapMergeTool.Services
 {
-    public class OutputMapService
+    public partial class OutputMap
     {
         private readonly OutputMapConfig config;
 
-        public OutputMapService(OutputMapConfig config)
+        public OutputMap(OutputMapConfig config)
         {
             this.config = config;
         }
 
         public void Preapare()
         {
-            string landscapesPath = Path.Combine(config.OutputDirectoryPath, "Landscape");
+            string landscapesPath = Path.Combine(config.Path, "Landscape");
             List<string> otherDirectories = new List<string>()
             {
                 Path.Combine(landscapesPath, "Heightmaps"),
-                Path.Combine(landscapesPath, "Splatmaps")
+                Path.Combine(landscapesPath, "Splatmaps"),
+                Path.Combine(landscapesPath, "Holes")
             };
 
             if (Directory.Exists(landscapesPath))

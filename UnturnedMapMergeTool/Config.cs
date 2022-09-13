@@ -5,32 +5,43 @@ using System.Text;
 using System.Threading.Tasks;
 using UnturnedMapMergeTool.Models.Enums;
 using UnturnedMapMergeTool.Models.Configs;
+using UnturnedMapMergeTool.Models;
 
 namespace UnturnedMapMergeTool
 {
     public class Config
     {
-        public List<MapConfig> Maps { get; set; } = new()
+        public List<CopyMapConfig> Maps { get; set; } = new()
         {
-            new MapConfig()
+            new CopyMapConfig()
             {
                 Name = "PEI",
                 Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\PEI",
                 Size = EMapSize.Medium,
-                WithBorders = false
+                WithBorders = false,
+                StartCoordinate = new Coordinate()
+                {
+                    X = 1,
+                    Y = 1
+                }
             },
-            new MapConfig()
+            new CopyMapConfig()
             {
                 Name = "Washington",
                 Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Washington",
                 Size = EMapSize.Medium,
-                WithBorders = true
+                WithBorders = true,
+                StartCoordinate = new Coordinate()
+                {
+                    X = 5,
+                    Y = 3
+                }
             }
         };
 
         public OutputMapConfig OutputMap { get; set; } = new()
         {
-            OutputDirectoryPath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMaps"
+            Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMaps"
         };
     }
 }

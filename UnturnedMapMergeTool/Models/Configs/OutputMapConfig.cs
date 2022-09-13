@@ -2,6 +2,6 @@
 {
     public class OutputMapConfig
     {
-        public string OutputDirectoryPath { get; set; }
+        public string Path { get; set; }
     }
 }
