@@ -33,7 +33,7 @@ namespace UnturnedMapMergeTool.Services
 
             if (!Directory.Exists(directoryPath))
             {
-                Log($"No {tileType} tiles on this map");
+                LogTile(tileType, $"No {tileType} tiles on this map");
                 return;
             }
 
