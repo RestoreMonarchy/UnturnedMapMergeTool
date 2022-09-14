@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnturnedMapMergeTool.Unturned.Unity
 {
@@ -40,10 +36,10 @@ namespace UnturnedMapMergeTool.Unturned.Unity
             double sr = Math.Sin(roll * 0.5);
 
             Quaternion q = new Quaternion();
-            q.w = (float)(cr * cp * cy + sr * sp * sy);
-            q.x = (float)(sr * cp * cy - cr * sp * sy);
-            q.y = (float)(cr * sp * cy + sr * cp * sy);
-            q.z = (float)(cr * cp * sy - sr * sp * cy);
+            q.w = Convert.ToSingle(cr * cp * cy + sr * sp * sy);
+            q.x = Convert.ToSingle(sr * cp * cy - cr * sp * sy);
+            q.y = Convert.ToSingle(cr * sp * cy + sr * cp * sy);
+            q.z = Convert.ToSingle(cr * cp * sy - sr * sp * cy);
 
             return q;
         }
@@ -55,23 +51,23 @@ namespace UnturnedMapMergeTool.Unturned.Unity
             // roll (x-axis rotation)
             double sinr_cosp = 2 * (q.w * q.x + q.y * q.z);
             double cosr_cosp = 1 - 2 * (q.x * q.x + q.y * q.y);
-            angles.x = (float)Math.Atan2(sinr_cosp, cosr_cosp);
+            angles.x = Convert.ToSingle(Math.Atan2(sinr_cosp, cosr_cosp));
 
             // pitch (y-axis rotation)
             double sinp = 2 * (q.w * q.y - q.z * q.x);
             if (Math.Abs(sinp) >= 1)
             {
-                angles.y = (float)Math.CopySign(Math.PI / 2, sinp);
+                angles.y = Convert.ToSingle(Math.CopySign(Math.PI / 2, sinp));
             }
             else
             {
-                angles.y = (float)Math.Asin(sinp);
+                angles.y = Convert.ToSingle(Math.Asin(sinp));
             }
 
             // yaw (z-axis rotation)
             double siny_cosp = 2 * (q.w * q.z + q.x * q.y);
             double cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z);
-            angles.z = (float)Math.Atan2(siny_cosp, cosy_cosp);
+            angles.z = Convert.ToSingle(Math.Atan2(siny_cosp, cosy_cosp));
 
             return angles;
         }

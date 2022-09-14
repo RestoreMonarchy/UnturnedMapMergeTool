@@ -16,13 +16,20 @@ namespace UnturnedMapMergeTool.Services
         private readonly CopyMapConfig config;
         private readonly OutputMap outputMap;
 
+        public Guid Identifier { get; private set; }
+
         public CopyMap(CopyMapConfig config, OutputMap outputMap)
         {
+            Identifier = Guid.NewGuid();
             this.config = config;
             this.outputMap = outputMap;
         }
 
+        public CopyMapConfig Config => config;
+
         private Coordinate StartCoordinate => config.StartCoordinate;
+
+        public ObjectDataContent ObjectDataContent { get; private set; }
 
         public void CopyAllTiles()
         {
@@ -31,17 +38,16 @@ namespace UnturnedMapMergeTool.Services
             CopyTilesFromDirectory("Landscape/Holes", ETileType.Hole);
         }
 
-        public void CopyLevel() 
+        public void ReadLevel() 
         {
-            CopyObjects();
+            ReadLevelObjects();
         }
 
-        private void CopyObjects()
+        private void ReadLevelObjects()
         {
             string fileNamePath = Path.Combine(config.Path, "Level/Objects.dat");
-            ObjectDataContent objectDataContent = ObjectDataContent.FromFile(fileNamePath);
-            File.WriteAllText("objects.json", JsonConvert.SerializeObject(objectDataContent, Formatting.Indented));
-            Console.WriteLine();
+            ObjectDataContent = ObjectDataContent.FromFile(fileNamePath);
+            File.WriteAllText($"objects_{config.Name}.json", JsonConvert.SerializeObject(ObjectDataContent, Formatting.Indented));
         }
 
         private void CopyTilesFromDirectory(string directory, ETileType tileType)

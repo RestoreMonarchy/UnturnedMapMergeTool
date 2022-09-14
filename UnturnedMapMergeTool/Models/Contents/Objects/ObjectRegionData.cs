@@ -4,7 +4,9 @@ namespace UnturnedMapMergeTool.Models.Contents.Objects
 {
     public class ObjectRegionData
     {
-        public int Count { get; set; }
+        public ushort Count { get; set; }
+        public byte RegionX { get; set; }
+        public byte RegionY { get; set; }
         public List<ObjectData> Objects { get; set; }
     }
 }

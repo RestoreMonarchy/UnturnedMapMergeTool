@@ -9,5 +9,7 @@ namespace UnturnedMapMergeTool.Models.Configs
         public EMapSize Size { get; set; }
         public bool WithBorders { get; set; }
         public Coordinate StartCoordinate { get; set; }
+        public int ShiftX { get; set; }
+        public int ShiftY { get; set; }
     }
 }

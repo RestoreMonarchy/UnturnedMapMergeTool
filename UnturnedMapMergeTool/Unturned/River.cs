@@ -163,7 +163,11 @@ namespace UnturnedMapMergeTool.Unturned
         // Token: 0x0600239B RID: 9115 RVA: 0x000929C6 File Offset: 0x00090BC6
         public Quaternion readSingleQuaternion()
         {
-            return Quaternion.Euler(this.readSingle(), this.readSingle(), this.readSingle());
+            float x = this.readSingle();
+            float y = this.readSingle();
+            float z = this.readSingle();
+            Quaternion quaternion = Quaternion.Euler(x, y, z);
+            return quaternion;
         }
 
         // Token: 0x0600239C RID: 9116 RVA: 0x000929DF File Offset: 0x00090BDF

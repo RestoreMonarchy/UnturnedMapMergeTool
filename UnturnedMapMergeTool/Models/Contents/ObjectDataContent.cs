@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnturnedMapMergeTool.Models.Contents.Objects;
 using UnturnedMapMergeTool.Unturned;
 using UnturnedMapMergeTool.Unturned.Unity;
@@ -13,10 +14,71 @@ namespace UnturnedMapMergeTool.Models.Contents
         public byte[] Hash { get; set; }
 
         public List<ObjectRegionData> ObjectRegions { get; set; }
+        
+        public ObjectDataContent()
+        {
+
+        }
+
+        public ObjectDataContent(byte saveDataVersion, CSteamID steamID, uint availableInstanceId, byte[] hash = null)
+        {
+            SaveDataVersion = saveDataVersion;
+            SteamID = steamID;
+            AvailableInstanceId = availableInstanceId;
+            Hash = hash;
+
+            ObjectRegions = new List<ObjectRegionData>();
+
+            for (byte i = 0; i < Regions.WORLD_SIZE; i++)
+            {
+                for (byte j = 0; j < Regions.WORLD_SIZE; j++)
+                {
+                    ObjectRegionData objectRegionData = new()
+                    {
+                        RegionX = i,
+                        RegionY = j,
+                        Count = 0,
+                        Objects = new List<ObjectData>()
+                    };
+
+                    ObjectRegions.Add(objectRegionData);
+                }
+            }
+        }
+
+
+        public void SaveToFile(string fileNamePath)
+        {
+            River river = new(fileNamePath);
+            river.writeByte(SaveDataVersion);
+            river.writeUInt32(AvailableInstanceId);
+
+            for (byte i = 0; i < Regions.WORLD_SIZE; i++)
+            {
+                for (byte j = 0; j < Regions.WORLD_SIZE; j++)
+                {
+                    ObjectRegionData regionData = ObjectRegions.FirstOrDefault(x => x.RegionX == i && x.RegionY == j);
+                    river.writeUInt16(regionData.Count);
+                    
+                    foreach (ObjectData objectData in regionData.Objects)
+                    {
+                        river.writeSingleVector3(objectData.Position);
+                        river.writeSingleQuaternion(objectData.Rotation);
+                        river.writeSingleVector3(objectData.LocalScale);
+                        river.writeUInt16(objectData.AssetId);
+                        river.writeGUID(objectData.Guid);
+                        river.writeByte(objectData.PlacementOrigin);
+                        river.writeUInt32(objectData.InstanceId);
+                    }
+                }
+            }
+
+            river.closeRiver();
+        }
 
         public static ObjectDataContent FromFile(string fileNamePath)
         {
-             River river = new River(fileNamePath);
+            River river = new(fileNamePath);
 
             ObjectDataContent content = new();
 
@@ -43,11 +105,15 @@ namespace UnturnedMapMergeTool.Models.Contents
 
             content.ObjectRegions = new List<ObjectRegionData>();
 
-            for (int i = 0; i < Regions.WORLD_SIZE; i++)
+            for (byte i = 0; i < Regions.WORLD_SIZE; i++)
             {
-                for (int j = 0; j < Regions.WORLD_SIZE; j++)
+                for (byte j = 0; j < Regions.WORLD_SIZE; j++)
                 {
-                    ObjectRegionData region = new ObjectRegionData();
+                    ObjectRegionData region = new()
+                    {
+                        RegionX = i,
+                        RegionY = j                        
+                    };
                     region.Count = river.readUInt16();
 
                     region.Objects = new List<ObjectData>();
@@ -66,7 +132,7 @@ namespace UnturnedMapMergeTool.Models.Contents
                             objectData.LocalScale = Vector3.one;
                         }
 
-                        objectData.Id = river.readUInt16();
+                        objectData.AssetId = river.readUInt16();
                         if (content.SaveDataVersion > 5 && content.SaveDataVersion < 10)
                         {
                             // What string is that?
