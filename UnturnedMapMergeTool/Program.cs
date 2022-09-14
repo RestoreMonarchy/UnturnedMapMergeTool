@@ -3,6 +3,7 @@ using UnturnedMapMergeTool;
 using UnturnedMapMergeTool.Services;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
+using SDG.Unturned;
 
 internal class Program
 {
