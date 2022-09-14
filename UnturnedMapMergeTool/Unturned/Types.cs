@@ -63,7 +63,7 @@ namespace UnturnedMapMergeTool.Unturned
         public static readonly Type COLOR_TYPE = typeof(Color);
 
         // Token: 0x0400224E RID: 8782
-        public static readonly Type QUATERNION_TYPE = typeof(Quaternion);
+        public static readonly Type QUATERNION_TYPE = typeof(EulerAngles);
 
         // Token: 0x0400224F RID: 8783
         public static readonly byte[] SHIFTS = new byte[]

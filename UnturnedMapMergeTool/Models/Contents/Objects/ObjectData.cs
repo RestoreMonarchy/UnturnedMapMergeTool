@@ -6,7 +6,7 @@ namespace UnturnedMapMergeTool.Models.Contents.Objects
     public class ObjectData
     {
         public Vector3 Position { get; set; }
-        public Quaternion Rotation { get; set; }
+        public EulerAngles Rotation { get; set; }
         public Vector3 LocalScale { get; set; }
         public ushort AssetId { get; set; }
         public Guid Guid { get; set; }

@@ -24,8 +24,8 @@ namespace UnturnedMapMergeTool
                     X = 1,
                     Y = 1
                 },
-                ShiftX = -2000,
-                ShiftY = -2000
+                ShiftX = -2048,
+                ShiftY = -2048
             },
             new CopyMapConfig()
             {
@@ -38,7 +38,7 @@ namespace UnturnedMapMergeTool
                     X = 5,
                     Y = 3
                 },
-                ShiftX = 2000,
+                ShiftX = 2048,
                 ShiftY = 0
             }
         };

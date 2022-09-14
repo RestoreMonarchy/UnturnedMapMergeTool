@@ -161,13 +161,12 @@ namespace UnturnedMapMergeTool.Unturned
         }
 
         // Token: 0x0600239B RID: 9115 RVA: 0x000929C6 File Offset: 0x00090BC6
-        public Quaternion readSingleQuaternion()
+        public EulerAngles readSingleQuaternion()
         {
             float x = this.readSingle();
             float y = this.readSingle();
             float z = this.readSingle();
-            Quaternion quaternion = Quaternion.Euler(x, y, z);
-            return quaternion;
+            return new EulerAngles(x, y, z);
         }
 
         // Token: 0x0600239C RID: 9116 RVA: 0x000929DF File Offset: 0x00090BDF
@@ -343,12 +342,11 @@ namespace UnturnedMapMergeTool.Unturned
         }
 
         // Token: 0x060023AB RID: 9131 RVA: 0x00092D84 File Offset: 0x00090F84
-        public void writeSingleQuaternion(Quaternion value)
+        public void writeSingleQuaternion(EulerAngles value)
         {
-            Vector3 eulerAngles = value.eulerAngles;
-            this.writeSingle(eulerAngles.x);
-            this.writeSingle(eulerAngles.y);
-            this.writeSingle(eulerAngles.z);
+            this.writeSingle(value.x);
+            this.writeSingle(value.y);
+            this.writeSingle(value.z);
         }
 
         // Token: 0x060023AC RID: 9132 RVA: 0x00092DBD File Offset: 0x00090FBD
