@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 using UnturnedMapMergeTool.Helpers;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
+using UnturnedMapMergeTool.Models.Contents;
 using UnturnedMapMergeTool.Models.Enums;
 
 namespace UnturnedMapMergeTool.Services
@@ -25,6 +29,19 @@ namespace UnturnedMapMergeTool.Services
             CopyTilesFromDirectory("Landscape/Heightmaps", ETileType.Heightmap);
             CopyTilesFromDirectory("Landscape/Splatmaps", ETileType.Splatmap);
             CopyTilesFromDirectory("Landscape/Holes", ETileType.Hole);
+        }
+
+        public void CopyLevel() 
+        {
+            CopyObjects();
+        }
+
+        private void CopyObjects()
+        {
+            string fileNamePath = Path.Combine(config.Path, "Level/Objects.dat");
+            ObjectDataContent objectDataContent = ObjectDataContent.FromFile(fileNamePath);
+            File.WriteAllText("objects.json", JsonConvert.SerializeObject(objectDataContent, Formatting.Indented));
+            Console.WriteLine();
         }
 
         private void CopyTilesFromDirectory(string directory, ETileType tileType)

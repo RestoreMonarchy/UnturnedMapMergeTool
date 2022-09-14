@@ -1,9 +1,7 @@
 ﻿using System;
 using UnturnedMapMergeTool;
-using UnturnedMapMergeTool.Services;
-using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
-using SDG.Unturned;
+using UnturnedMapMergeTool.Services;
 
 internal class Program
 {
@@ -17,9 +15,9 @@ internal class Program
 
         foreach (CopyMapConfig map in config.Maps)
         {
-
             CopyMap mapCopier = new(map, outputMap);
             mapCopier.CopyAllTiles();
+            mapCopier.CopyLevel();
         }
 
         Console.ReadKey();
