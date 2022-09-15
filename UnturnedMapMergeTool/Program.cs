@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using UnturnedMapMergeTool;
+using UnturnedMapMergeTool.DataMergeTools;
 using UnturnedMapMergeTool.Models.Configs;
 using UnturnedMapMergeTool.Services;
 
@@ -8,6 +10,10 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .CreateLogger();
+
         Config config = new();
         OutputMap outputMap = new(config.OutputMap);
 
@@ -15,23 +21,29 @@ internal class Program
         outputMap.Preapare();
 
         List<CopyMap> copyMaps = new();
-        foreach (CopyMapConfig map in config.Maps)
+
+        ObjectsDataMergeTool objectsDataMergeTool = new();
+        BuildablesDataMergeTool buildablesDataMergeTool = new();
+        TreesDataMergeTool treesDataMergeTool = new();
+        
+
+        foreach (CopyMapConfig mapConfig in config.Maps)
         {
-            CopyMap copyMap = new(map, outputMap);
+            CopyMap copyMap = new(mapConfig, outputMap);
+
+            objectsDataMergeTool.ReadData(copyMap);
+            buildablesDataMergeTool.ReadData(copyMap);
+            treesDataMergeTool.ReadData(copyMap);
+
             copyMaps.Add(copyMap);
 
             copyMap.CopyAllTiles();
-            copyMap.ReadLevel();
-            copyMap.ReadTerrain();
         }
 
-        LevelService levelService = new(outputMap, copyMaps);
-        levelService.CombineAndSaveObjects();
-        levelService.CombineAndSaveBuildables();
-
-        TerrainService terrainService = new(copyMaps, outputMap);
-
-        terrainService.CombineAndSaveTrees();
+        objectsDataMergeTool.CombineAndSaveData(outputMap);
+        buildablesDataMergeTool.CombineAndSaveData(outputMap);
+        treesDataMergeTool.CombineAndSaveData(outputMap);
+        
 
         Console.ReadKey();
     }

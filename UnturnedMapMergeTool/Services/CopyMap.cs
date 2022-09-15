@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.IO;
-using System.Linq;
-using UnturnedMapMergeTool.Helpers;
+﻿using System;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
-using UnturnedMapMergeTool.Models.Contents;
-using UnturnedMapMergeTool.Models.Enums;
+using UnturnedMapMergeTool.Unturned.Unity;
 
 namespace UnturnedMapMergeTool.Services
 {
@@ -28,7 +23,11 @@ namespace UnturnedMapMergeTool.Services
 
         private Coordinate StartCoordinate => config.StartCoordinate;
 
-        
+        public void ApplyShift(Vector3 position)
+        {
+            position.x += Config.ShiftX;
+            position.z += Config.ShiftY;
+        }
 
         
     }
