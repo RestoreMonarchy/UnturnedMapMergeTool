@@ -26,6 +26,7 @@ internal class Program
         BuildablesDataMergeTool buildablesDataMergeTool = new();
         TreesDataMergeTool treesDataMergeTool = new();
         PathsDataMergeTool pathsDataMergeTool = new();
+        RoadsDataMergeTool roadsDataMergeTool = new();
         
 
         foreach (CopyMapConfig mapConfig in config.Maps)
@@ -36,6 +37,7 @@ internal class Program
             buildablesDataMergeTool.ReadData(copyMap);
             treesDataMergeTool.ReadData(copyMap);
             pathsDataMergeTool.ReadData(copyMap);
+            roadsDataMergeTool.ReadData(copyMap);
 
             copyMaps.Add(copyMap);
 
@@ -46,6 +48,7 @@ internal class Program
         buildablesDataMergeTool.CombineAndSaveData(outputMap);
         treesDataMergeTool.CombineAndSaveData(outputMap);
         pathsDataMergeTool.CombineAndSaveData(outputMap);
+        roadsDataMergeTool.CombineAndSaveData(outputMap);
         
 
         Console.ReadKey();

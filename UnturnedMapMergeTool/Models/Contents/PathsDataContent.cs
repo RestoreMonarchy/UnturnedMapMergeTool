@@ -109,6 +109,8 @@ namespace UnturnedMapMergeTool.Models.Contents
                 }
             }
 
+            river.closeRiver();
+
             return content;
         }
     }
