@@ -15,6 +15,11 @@ namespace UnturnedMapMergeTool.Services
 
         public void Preapare()
         {
+            PrepareLandscapes();
+        }
+
+        private void PrepareLandscapes()
+        {
             string landscapesPath = Path.Combine(config.Path, "Landscape");
             List<string> otherDirectories = new List<string>()
             {
@@ -32,7 +37,7 @@ namespace UnturnedMapMergeTool.Services
 
             foreach (string directoryPath in otherDirectories)
             {
-                if (!Directory.Exists(directoryPath)) 
+                if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
                 }

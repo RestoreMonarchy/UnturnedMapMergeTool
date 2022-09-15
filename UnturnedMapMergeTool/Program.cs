@@ -26,6 +26,7 @@ internal class Program
 
         LevelService levelService = new(outputMap, copyMaps);
         levelService.CombineAndSaveObjects();
+        levelService.CombineAndSaveBuildables();
 
         Console.ReadKey();
     }

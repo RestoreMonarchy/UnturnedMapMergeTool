@@ -6,6 +6,7 @@ using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Unturned.Unity;
 using UnturnedMapMergeTool.Unturned;
 using System;
+using UnturnedMapMergeTool.Models.Contents.Buildables;
 
 namespace UnturnedMapMergeTool.Services
 {
@@ -22,58 +23,82 @@ namespace UnturnedMapMergeTool.Services
 
         public void CombineAndSaveObjects()
         {
-            IEnumerable<ObjectData> objects = copyMaps.SelectMany(x => x.ObjectDataContent.ObjectRegions.SelectMany(y => y.Objects));
+            uint availableInstanceId = 0;
+            byte saveDataVersion = 10;
+            CSteamID steamID = null;
+            ObjectDataContent content = new(saveDataVersion, steamID, availableInstanceId);
 
-            Log($"Combining {objects.Count()} objects...");
-
-            // Get objects from all maps in one list
-            List<MapObjectData> mapObjectsData = new();
             foreach (CopyMap copyMap in copyMaps)
             {
                 IEnumerable<ObjectData> copyMapObjects = copyMap.ObjectDataContent.ObjectRegions.SelectMany(x => x.Objects);
 
                 foreach (ObjectData objectData in copyMapObjects)
                 {
-                    MapObjectData mapObjectData = new()
+                    ObjectData shiftedObjectData = new()
                     {
-                        Map = copyMap,
-                        ObjectData = objectData
+                        Position = objectData.Position,
+                        LocalScale = objectData.LocalScale,
+                        AssetId = objectData.AssetId,
+                        Guid = objectData.Guid,
+                        PlacementOrigin = objectData.PlacementOrigin,
+                        Rotation = objectData.Rotation,
+                        InstanceId = availableInstanceId++
                     };
 
-                    mapObjectsData.Add(mapObjectData);
-                }
-            }
+                    // Yeah Y is actually Z in unity Vector3
+                    shiftedObjectData.Position.x += copyMap.Config.ShiftX;
+                    shiftedObjectData.Position.z += copyMap.Config.ShiftY;
 
-            uint instanceId = 0;
-            // Shift positions
-            foreach (MapObjectData mapObjectData in mapObjectsData)
-            {
-                instanceId++;
-                mapObjectData.ObjectData.Position.x += mapObjectData.Map.Config.ShiftX;
-                // Yeaah Y is actually Z in Vector3, shrug
-                mapObjectData.ObjectData.Position.z += mapObjectData.Map.Config.ShiftY;
-                mapObjectData.ObjectData.InstanceId = instanceId;
+                    Regions.tryGetCoordinate(shiftedObjectData.Position, out byte regionX, out byte regionY);
+
+                    ObjectRegionData objectRegionData = content.ObjectRegions.FirstOrDefault(x => x.RegionX == regionX && x.RegionY == regionY);
+                    objectRegionData.Objects.Add(shiftedObjectData);
+                    objectRegionData.Count++;
+                }
             }
 
             string objectsSavePath = outputMap.CombinePath("Level/Objects.dat");
 
+            content.SaveToFile(objectsSavePath);
+
+            Log($"Combined and saved {content.ObjectRegions.Sum(x => x.Count)} objects");
+        }
+
+        public void CombineAndSaveBuildables()
+        {
             byte saveDataVersion = 10;
-            CSteamID steamID = null;
-            uint availableInstanceId = instanceId + 1;
-            ObjectDataContent content = new(saveDataVersion, steamID, availableInstanceId);
+            BuildableDataContent content = new(saveDataVersion);
 
-            foreach (MapObjectData mapObjectData in mapObjectsData)
+            foreach (CopyMap copyMap in copyMaps)
             {
-                Regions.tryGetCoordinate(mapObjectData.ObjectData.Position, out byte regionX, out byte regionY);
+                IEnumerable<BuildableData> copyMapBuildables = copyMap.BuildableDataContent.BuildableRegions.SelectMany(x => x.Buildables);
 
-                ObjectRegionData objectRegionData = content.ObjectRegions.FirstOrDefault(x => x.RegionX == regionX && x.RegionY == regionY);
-                objectRegionData.Objects.Add(mapObjectData.ObjectData);
-                objectRegionData.Count++;
+                foreach (BuildableData buildableData in copyMapBuildables)
+                {
+                    BuildableData shiftedBuildableData = new()
+                    {
+                        Position = buildableData.Position,
+                        AssetId = buildableData.AssetId,
+                        Rotation = buildableData.Rotation
+                    };
+
+                    // Yeah Y is actually Z in unity Vector3
+                    shiftedBuildableData.Position.x += copyMap.Config.ShiftX;
+                    shiftedBuildableData.Position.z += copyMap.Config.ShiftY;
+
+                    Regions.tryGetCoordinate(shiftedBuildableData.Position, out byte regionX, out byte regionY);
+
+                    BuildableRegionData objectRegionData = content.BuildableRegions.FirstOrDefault(x => x.RegionX == regionX && x.RegionY == regionY);
+                    objectRegionData.Buildables.Add(shiftedBuildableData);
+                    objectRegionData.Count++;
+                }
             }
+
+            string objectsSavePath = outputMap.CombinePath("Level/Buildables.dat");
 
             content.SaveToFile(objectsSavePath);
 
-            Log($"Finished combining and saved {objects.Count()} objects in output map ");
+            Log($"Combined and saved {content.BuildableRegions.Sum(x => x.Count)} buildables");
         }
 
         private void Log(string message)
