@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
+using System.Linq;
 using UnturnedMapMergeTool.Helpers;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
@@ -40,7 +39,9 @@ namespace UnturnedMapMergeTool.Services
 
         public void ReadLevel() 
         {
+            Log("Reading level...");
             ReadLevelObjects();
+            Log("Done reading level");
         }
 
         private void ReadLevelObjects()
@@ -48,6 +49,8 @@ namespace UnturnedMapMergeTool.Services
             string fileNamePath = Path.Combine(config.Path, "Level/Objects.dat");
             ObjectDataContent = ObjectDataContent.FromFile(fileNamePath);
             File.WriteAllText($"objects_{config.Name}.json", JsonConvert.SerializeObject(ObjectDataContent, Formatting.Indented));
+            int objectsCount = ObjectDataContent.ObjectRegions.Sum(x => x.Count);
+            Log($"Read {objectsCount} objects");
         }
 
         private void CopyTilesFromDirectory(string directory, ETileType tileType)
