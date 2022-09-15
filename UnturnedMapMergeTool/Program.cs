@@ -22,11 +22,16 @@ internal class Program
 
             copyMap.CopyAllTiles();
             copyMap.ReadLevel();
+            copyMap.ReadTerrain();
         }
 
         LevelService levelService = new(outputMap, copyMaps);
         levelService.CombineAndSaveObjects();
         levelService.CombineAndSaveBuildables();
+
+        TerrainService terrainService = new(copyMaps, outputMap);
+
+        terrainService.CombineAndSaveTrees();
 
         Console.ReadKey();
     }

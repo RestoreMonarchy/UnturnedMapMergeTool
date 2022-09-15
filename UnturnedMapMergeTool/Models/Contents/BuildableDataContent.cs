@@ -39,7 +39,6 @@ namespace UnturnedMapMergeTool.Models.Contents
             }
         }
 
-
         public void SaveToFile(string fileNamePath)
         {
             River river = new(fileNamePath);
