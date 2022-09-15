@@ -1,6 +1,8 @@
-﻿using Serilog;
+﻿using Newtonsoft.Json;
+using Serilog;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnturnedMapMergeTool;
 using UnturnedMapMergeTool.DataMergeTools;
 using UnturnedMapMergeTool.Models.Configs;
@@ -14,7 +16,19 @@ internal class Program
             .WriteTo.Console()
             .CreateLogger();
 
-        Config config = new();
+        Config config;
+        if (File.Exists("config.json"))
+        {
+            string configJson = File.ReadAllText("config.json");
+            config = JsonConvert.DeserializeObject<Config>(configJson);
+        } else
+        {
+            config = new();
+            string configJson = JsonConvert.SerializeObject(config, Formatting.Indented);
+            File.WriteAllText("config.json", configJson);
+        }
+
+        
         OutputMap outputMap = new(config.OutputMap);
 
         // Delete existing directories and create empty
