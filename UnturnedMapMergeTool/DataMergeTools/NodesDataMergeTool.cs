@@ -22,12 +22,6 @@ namespace UnturnedMapMergeTool.DataMergeTools
             byte saveDataVersion = 2;
             int count = Data.Sum(x => x.Content.Nodes.Count);
             byte countByte = (byte)count;
-            if (count > byte.MaxValue)
-            {
-                Log.Warning($"There is more nodes than byte max value! {count}");
-                countByte = byte.MaxValue;
-                
-            }
 
             NodesDataContent content = new(saveDataVersion, countByte);
 

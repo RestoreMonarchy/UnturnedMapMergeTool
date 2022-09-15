@@ -24,8 +24,12 @@ internal class Program
         } else
         {
             config = new();
+            config.LoadDefaultValues();
+
             string configJson = JsonConvert.SerializeObject(config, Formatting.Indented);
             File.WriteAllText("config.json", configJson);
+            Log.Information("Generated a config.json file with. Modify it before running this program again!");
+            return;
         }
 
         
@@ -42,6 +46,9 @@ internal class Program
         RoadsDataMergeTool roadsDataMergeTool = new();
         PathsDataMergeTool pathsDataMergeTool = new();
         NodesDataMergeTool nodesDataMergeTool = new();
+        FlagsDataMergeTool flagsDataMergeTool = new();
+
+        Log.Information($"Start combining {config.Maps.Count} maps");
 
         foreach (CopyMapConfig mapConfig in config.Maps)
         {
@@ -54,6 +61,7 @@ internal class Program
             roadsDataMergeTool.ReadData(copyMap);
             pathsDataMergeTool.ReadData(copyMap);
             nodesDataMergeTool.ReadData(copyMap);
+            flagsDataMergeTool.ReadData(copyMap);
 
             copyMaps.Add(copyMap);
 
@@ -66,6 +74,7 @@ internal class Program
         roadsDataMergeTool.CombineAndSaveData(outputMap);
         pathsDataMergeTool.CombineAndSaveData(outputMap);        
         nodesDataMergeTool.CombineAndSaveData(outputMap);
+        flagsDataMergeTool.CombineAndSaveData(outputMap);
 
         Console.ReadKey();
     }

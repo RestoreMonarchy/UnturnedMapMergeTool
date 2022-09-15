@@ -11,41 +11,49 @@ namespace UnturnedMapMergeTool
 {
     public class Config
     {
-        public List<CopyMapConfig> Maps { get; set; } = new()
+        public void LoadDefaultValues()
         {
-            new CopyMapConfig()
+            Maps = new()
             {
-                Name = "PEI",
-                Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\PEI",
-                Size = EMapSize.Medium,
-                WithBorders = false,
-                StartCoordinate = new Coordinate()
+                new CopyMapConfig()
                 {
-                    X = 1,
-                    Y = 1
+                    Name = "PEI",
+                    Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\PEI",
+                    Size = EMapSize.Medium,
+                    WithBorders = false,
+                    StartCoordinate = new Coordinate()
+                    {
+                        X = 1,
+                        Y = 1
+                    },
+                    ShiftX = -2048,
+                    ShiftY = -2048
                 },
-                ShiftX = -2048,
-                ShiftY = -2048
-            },
-            new CopyMapConfig()
-            {
-                Name = "Washington",
-                Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Washington",
-                Size = EMapSize.Medium,
-                WithBorders = true,
-                StartCoordinate = new Coordinate()
+                new CopyMapConfig()
                 {
-                    X = 5,
-                    Y = 3
-                },
-                ShiftX = 2048,
-                ShiftY = 0
-            }
-        };
+                    Name = "Washington",
+                    Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Washington",
+                    Size = EMapSize.Medium,
+                    WithBorders = true,
+                    StartCoordinate = new Coordinate()
+                    {
+                        X = 5,
+                        Y = 3
+                    },
+                    ShiftX = 2048,
+                    ShiftY = 0
+                }
+            };
 
-        public OutputMapConfig OutputMap { get; set; } = new()
-        {
-            Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMaps"
-        };
+            OutputMap = new()
+            {
+                Path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMaps"
+            };
+        }
+
+
+        public List<CopyMapConfig> Maps { get; set; } 
+
+        public OutputMapConfig OutputMap { get; set; }
     }
 }
