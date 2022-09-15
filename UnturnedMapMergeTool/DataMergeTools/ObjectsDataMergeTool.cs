@@ -41,7 +41,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
                         InstanceId = 0
                     };
 
-                    dataItem.CopyMap.ApplyShift(shiftedObjectData.Position);
+                    dataItem.CopyMap.ApplyPositionShift(shiftedObjectData.Position);
 
                     shiftedObjectData.InstanceId = availableInstanceId++;
 

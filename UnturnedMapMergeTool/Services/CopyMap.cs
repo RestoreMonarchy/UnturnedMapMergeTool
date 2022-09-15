@@ -23,12 +23,19 @@ namespace UnturnedMapMergeTool.Services
 
         private Coordinate StartCoordinate => config.StartCoordinate;
 
-        public void ApplyShift(Vector3 position)
+        public void ApplyPositionShift(Vector3 position)
         {
             position.x += Config.ShiftX;
             position.z += Config.ShiftY;
         }
 
-        
+        public byte MaterialShift { get; set; } = 0;
+
+        // This doesn't work because there cannot be more than 10 materials (in the Roads.unity3d file) on one map
+        public byte ApplyMaterialShift(byte material)
+        {
+            return (byte)(material + MaterialShift);
+        }
+
     }
 }

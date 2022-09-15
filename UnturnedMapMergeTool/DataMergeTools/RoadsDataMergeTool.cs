@@ -21,12 +21,15 @@ namespace UnturnedMapMergeTool.DataMergeTools
             byte count = (byte)Data.Sum(x => x.Content.Materials.Count);
             RoadsDataContent content = new(saveDataVersion, count);
 
+            byte materialId = 0;
             foreach (CopyMapData<RoadsDataContent> dataItem in Data)
             {
+                dataItem.CopyMap.MaterialShift = materialId;
                 foreach (RoadMaterialData roadMaterial in dataItem.Content.Materials)
                 {
                     content.Materials.Add(roadMaterial);
-                }
+                    materialId++;
+                }                
             }
 
             string roadsSavePath = outputMap.CombinePath("Environment/Roads.dat");

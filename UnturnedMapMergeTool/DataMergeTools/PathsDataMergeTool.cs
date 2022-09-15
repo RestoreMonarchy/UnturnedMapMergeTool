@@ -28,14 +28,10 @@ namespace UnturnedMapMergeTool.DataMergeTools
             {
                 foreach (PathLineData pathLine in dataItem.Content.PathLines)
                 {
+                    //pathLine.Material = dataItem.CopyMap.ApplyMaterialShift(pathLine.Material);
                     foreach (PathJointData pathJoint in pathLine.Joints)
                     {
-                        dataItem.CopyMap.ApplyShift(pathJoint.Vertex);
-
-                        //if (pathJoint.Tangents[0] != null)
-                        //    dataItem.CopyMap.ApplyShift(pathJoint.Tangents[0]);
-                        //if (pathJoint.Tangents[1] != null)
-                        //    dataItem.CopyMap.ApplyShift(pathJoint.Tangents[1]);
+                        dataItem.CopyMap.ApplyPositionShift(pathJoint.Vertex);
                     }
 
                     content.PathLines.Add(pathLine);

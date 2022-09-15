@@ -34,7 +34,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
                         IsGenerated = treeData.IsGenerated
                     };
 
-                    dataItem.CopyMap.ApplyShift(shiftedTreeData.Position);
+                    dataItem.CopyMap.ApplyPositionShift(shiftedTreeData.Position);
 
                     Regions.tryGetCoordinate(shiftedTreeData.Position, out byte regionX, out byte regionY);
 

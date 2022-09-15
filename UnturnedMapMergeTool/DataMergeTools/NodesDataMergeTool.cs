@@ -35,7 +35,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
             {
                 foreach (NodeData node in dataItem.Content.Nodes)
                 {
-                    dataItem.CopyMap.ApplyShift(node.Point);
+                    dataItem.CopyMap.ApplyPositionShift(node.Point);
                     content.Nodes.Add(node);
                 }
             }
