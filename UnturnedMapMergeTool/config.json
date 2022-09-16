@@ -3,7 +3,7 @@
     {
       "Name": "PEI",
       "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\PEI",
-      "Size":"Medium",
+      "Size": "Medium",
       "WithBorders": true,
       "StartCoordinate": {
         "X": 6,
@@ -35,6 +35,18 @@
       },
       "ShiftX": -2048,
       "ShiftY": 2048
+    },
+    {
+      "Name": "Yukon",
+      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Yukon",
+      "Size": "Medium",
+      "WithBorders": false,
+      "StartCoordinate": {
+        "X": 6,
+        "Y": 3
+      },
+      "ShiftX": 3072,
+      "ShiftY": 0
     }
   ],
   "OutputMap": {

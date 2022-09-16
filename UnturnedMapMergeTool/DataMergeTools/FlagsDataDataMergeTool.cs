@@ -38,6 +38,9 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
             content.SaveToFile(savePath);
 
+            // DEBUG
+            File.WriteAllText($"flags_data_output.json", JsonConvert.SerializeObject(content, Formatting.Indented));
+
             Log.Information($"Combined and saved {content.FlagsData.Count} flags data");
         }
 

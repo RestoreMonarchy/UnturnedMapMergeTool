@@ -35,9 +35,12 @@ namespace UnturnedMapMergeTool.DataMergeTools
                 }
             }
 
-            string nodesSavePath = outputMap.CombinePath("Environment/Flags.dat");
+            string savePath = outputMap.CombinePath("Environment/Flags.dat");
 
-            content.SaveToFile(nodesSavePath);
+            content.SaveToFile(savePath);
+
+            // DEBUG
+            File.WriteAllText($"flags_output.json", JsonConvert.SerializeObject(content, Formatting.Indented));
 
             Log.Information($"Combined and saved {content.Flags.Count} flags");
         }

@@ -46,8 +46,9 @@ internal class Program
         RoadsDataMergeTool roadsDataMergeTool = new();
         PathsDataMergeTool pathsDataMergeTool = new();
         NodesDataMergeTool nodesDataMergeTool = new();
-        FlagsDataMergeTool flagsDataMergeTool = new();
+        BoundsDataMergeTool boundsDataMergeTool = new();
         FlagsDataDataMergeTool flagsDataDataMergeTool = new();
+        FlagsDataMergeTool flagsDataMergeTool = new();
         //NavigationsDataMergeTool navigationsDataMergeTool = new();
 
         Log.Information($"Start combining {config.Maps.Count} maps");
@@ -63,8 +64,9 @@ internal class Program
             roadsDataMergeTool.ReadData(copyMap);
             pathsDataMergeTool.ReadData(copyMap);
             nodesDataMergeTool.ReadData(copyMap);
-            flagsDataMergeTool.ReadData(copyMap);
+            boundsDataMergeTool.ReadData(copyMap);
             flagsDataDataMergeTool.ReadData(copyMap);
+            flagsDataMergeTool.ReadData(copyMap);
             //navigationsDataMergeTool.ReadData(copyMap);
 
             copyMaps.Add(copyMap);
@@ -78,8 +80,9 @@ internal class Program
         roadsDataMergeTool.CombineAndSaveData(outputMap);
         pathsDataMergeTool.CombineAndSaveData(outputMap);        
         nodesDataMergeTool.CombineAndSaveData(outputMap);
-        flagsDataMergeTool.CombineAndSaveData(outputMap);
+        boundsDataMergeTool.CombineAndSaveData(outputMap);
         flagsDataDataMergeTool.CombineAndSaveData(outputMap);
+        flagsDataMergeTool.CombineAndSaveData(outputMap);
         //navigationsDataMergeTool.CombineAndSaveData(outputMap);
 
         Console.ReadKey();

@@ -57,9 +57,25 @@ namespace UnturnedMapMergeTool.Models.Contents
                 content.FlagsData.Add(flagData);
 
                 flagData.DifficultyGuid = river.readString();
-                flagData.MaxZombies = river.readByte();
-                flagData.SpawnZombies = river.readBoolean();
-                flagData.HyperAgro = river.readBoolean();
+
+                flagData.MaxZombies = 64;
+                if (content.SaveDataVersion > 1)
+                {
+                    flagData.MaxZombies = river.readByte();
+                }
+
+                flagData.SpawnZombies = true;
+                if (content.SaveDataVersion > 2)
+                {
+                    flagData.SpawnZombies = river.readBoolean();
+                }
+
+                flagData.HyperAgro = false;
+                if (content.SaveDataVersion >= 4)
+                {
+                    flagData.HyperAgro = river.readBoolean();
+                }
+                
             }
 
             river.closeRiver();

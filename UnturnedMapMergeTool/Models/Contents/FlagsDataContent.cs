@@ -58,6 +58,12 @@ namespace UnturnedMapMergeTool.Models.Contents
                 flagData.Point = river.readSingleVector3();
                 flagData.Width = river.readSingle();
                 flagData.Height = river.readSingle();
+
+                if (content.SaveDataVersion < 4)
+                {
+                    flagData.Height *= 0.5f;
+                    flagData.Width *= 0.5f;
+                }
             }
 
             river.closeRiver();
