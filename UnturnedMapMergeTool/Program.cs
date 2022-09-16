@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnturnedMapMergeTool;
 using UnturnedMapMergeTool.DataMergeTools;
+using UnturnedMapMergeTool.DataMergeTools.Spawns;
 using UnturnedMapMergeTool.Models.Configs;
 using UnturnedMapMergeTool.Services;
 
@@ -51,6 +52,8 @@ internal class Program
         FlagsDataMergeTool flagsDataMergeTool = new();
         //NavigationsDataMergeTool navigationsDataMergeTool = new();
 
+        ZombiesDataMergeTool zombiesDataMergeTool = new();
+
         Log.Information($"Start combining {config.Maps.Count} maps");
 
         foreach (CopyMapConfig mapConfig in config.Maps)
@@ -68,6 +71,8 @@ internal class Program
             flagsDataDataMergeTool.ReadData(copyMap);
             flagsDataMergeTool.ReadData(copyMap);
             //navigationsDataMergeTool.ReadData(copyMap);
+
+            zombiesDataMergeTool.ReadData(copyMap);
 
             copyMaps.Add(copyMap);
 
