@@ -17,6 +17,8 @@ namespace UnturnedMapMergeTool.DataMergeTools
     {
         public List<CopyMapData<FlagsDataContent>> Data { get; set; } = new();
 
+        private int flagsIndex = 0;
+
         public override void CombineAndSaveData(OutputMap outputMap)
         {
             byte saveDataVersion = 4;
@@ -50,9 +52,11 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
             // Add flag to the copy maps because it will be used by the navigation
             copyMap.Flags = new();
+            copyMap.FlagsStartIndex = flagsIndex;
             foreach (FlagData flag in content.Flags)
             {                
                 copyMap.Flags.Add(flag);
+                flagsIndex++;                
             }
             
             CopyMapData<FlagsDataContent> dataItem = new()

@@ -18,7 +18,23 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
         public override void CombineAndSaveData(OutputMap outputMap)
         {
-            throw new System.NotImplementedException();
+            int count = 0;
+            foreach (CopyMapData<List<NavigationsDataContent>> dataItem in Data)
+            {
+                for (int i = 0; i < dataItem.Content.Count; i++)
+                {
+                    NavigationsDataContent content = dataItem.Content[i];
+                    dataItem.CopyMap.ApplyPositionShift(content.ForcedBoundsCenter);
+
+                    int index = dataItem.CopyMap.FlagsStartIndex + i;
+                    string savePath = outputMap.CombinePath($"Environment/Navigation_{index}.dat");
+                    
+                    content.SaveToFile(savePath);
+                    count++;
+                }
+            }
+
+            Log.Information($"Combined and saved {count} navigations");
         }
 
         public override void ReadData(CopyMap copyMap)
@@ -27,11 +43,6 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
             for (int i = 0; i < copyMap.Flags.Count; i++)
             {
-                FlagData flag = copyMap.Flags[i];
-
-                NavigationsDataContent dataContent = new();
-                dataContents.Add(dataContent);
-
                 Stopwatch stopwatch = new();
                 stopwatch.Start();
                 string fileNamePath = Path.Combine(copyMap.Config.Path, $"Environment/Navigation_{i}.dat");

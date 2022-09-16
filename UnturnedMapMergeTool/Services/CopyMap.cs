@@ -38,8 +38,10 @@ namespace UnturnedMapMergeTool.Services
         {
             return (byte)(material + MaterialShift);
         }
-
+        
+        // Used and necessary for NavigationsDataMergeTool
         public List<FlagData> Flags { get; set; }
+        public int FlagsStartIndex { get; set; }
 
     }
 }

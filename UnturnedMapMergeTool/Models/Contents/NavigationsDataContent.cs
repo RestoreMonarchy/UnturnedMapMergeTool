@@ -36,7 +36,7 @@ namespace UnturnedMapMergeTool.Models.Contents
             {
                 for (int j = 0; j < TileXCount; j++)
                 {
-                    int index = i + j * TileXCount;
+                    int index = j + i * TileXCount;
                     NavmeshTileData navmeshTile = NavmeshTiles[index];
 
                     river.writeUInt16(navmeshTile.TrisCount);
