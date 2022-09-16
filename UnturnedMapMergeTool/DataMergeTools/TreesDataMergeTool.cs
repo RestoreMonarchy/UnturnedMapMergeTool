@@ -38,7 +38,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                     if (!Regions.tryGetCoordinate(shiftedTreeData.Position, out byte regionX, out byte regionY))
                     {
-                        Log.Warning($"TREE: Failed to get coordinates for {shiftedTreeData.Position}");
+                        //Log.Warning($"TREE: Failed to get coordinates for {shiftedTreeData.Position}");
                         continue;
                     }
 

@@ -48,6 +48,13 @@ namespace UnturnedMapMergeTool.DataMergeTools
             // Write to JSON file for debug
             File.WriteAllText($"flags_{copyMap.Config.Name}.json", JsonConvert.SerializeObject(content, Formatting.Indented));
 
+            // Add flag to the copy maps because it will be used by the navigation
+            copyMap.Flags = new();
+            foreach (FlagData flag in content.Flags)
+            {                
+                copyMap.Flags.Add(flag);
+            }
+            
             CopyMapData<FlagsDataContent> dataItem = new()
             {
                 CopyMap = copyMap,

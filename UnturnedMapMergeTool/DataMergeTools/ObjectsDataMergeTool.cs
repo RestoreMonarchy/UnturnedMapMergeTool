@@ -45,7 +45,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                     if (!Regions.tryGetCoordinate(shiftedObjectData.Position, out byte regionX, out byte regionY))
                     {
-                        Log.Warning($"OBJECT: Failed to get coordinates for {shiftedObjectData.Position}");
+                        //Log.Warning($"OBJECT: Failed to get coordinates for {shiftedObjectData.Position}");
                         continue;
                     }
 

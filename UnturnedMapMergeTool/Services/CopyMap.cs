@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
+using UnturnedMapMergeTool.Models.Contents.Flags;
 using UnturnedMapMergeTool.Unturned.Unity;
 
 namespace UnturnedMapMergeTool.Services
@@ -36,6 +38,8 @@ namespace UnturnedMapMergeTool.Services
         {
             return (byte)(material + MaterialShift);
         }
+
+        public List<FlagData> Flags { get; set; }
 
     }
 }
