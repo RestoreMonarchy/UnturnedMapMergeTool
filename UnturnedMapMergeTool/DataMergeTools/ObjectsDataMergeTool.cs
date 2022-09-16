@@ -43,11 +43,16 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                     dataItem.CopyMap.ApplyPositionShift(shiftedObjectData.Position);
 
+                    if (!Regions.tryGetCoordinate(shiftedObjectData.Position, out byte regionX, out byte regionY))
+                    {
+                        Log.Warning($"OBJECT: Failed to get coordinates for {shiftedObjectData.Position}");
+                        continue;
+                    }
+
                     shiftedObjectData.InstanceId = availableInstanceId++;
 
-                    Regions.tryGetCoordinate(shiftedObjectData.Position, out byte regionX, out byte regionY);
+                    ObjectRegionData objectRegionData = content.ObjectRegions.First(x => x.RegionX == regionX && x.RegionY == regionY);
 
-                    ObjectRegionData objectRegionData = content.ObjectRegions.FirstOrDefault(x => x.RegionX == regionX && x.RegionY == regionY);
                     objectRegionData.Objects.Add(shiftedObjectData);
                     objectRegionData.Count++;
                 }

@@ -36,7 +36,11 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                     dataItem.CopyMap.ApplyPositionShift(shiftedTreeData.Position);
 
-                    Regions.tryGetCoordinate(shiftedTreeData.Position, out byte regionX, out byte regionY);
+                    if (!Regions.tryGetCoordinate(shiftedTreeData.Position, out byte regionX, out byte regionY))
+                    {
+                        Log.Warning($"TREE: Failed to get coordinates for {shiftedTreeData.Position}");
+                        continue;
+                    }
 
                     TreeRegionData treeRegionData = content.TreeRegions.First(x => x.RegionX == regionX && x.RegionY == regionY);
                     treeRegionData.Trees.Add(shiftedTreeData);

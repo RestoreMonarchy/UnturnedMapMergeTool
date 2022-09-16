@@ -30,17 +30,18 @@ namespace UnturnedMapMergeTool.Services
             {
                 string fileName = Path.GetFileName(fileNamePath);
                 TileFileInfo fileInfo = TileFileInfo.FromFileName(fileName, tileType);
+
+                if (!config.WithBorders && TilesHelper.IsBorder(fileInfo.OriginalTileX, fileInfo.OriginalTileY, config.Size))
+                {
+                    LogTile(tileType, $"Skipping border tile {fileName}");
+                    continue;
+                }
+
                 Coordinate originalCoordinate = new()
                 {
                     X = TilesHelper.TileToIndex(fileInfo.OriginalTileX, config.Size),
                     Y = TilesHelper.TileToIndex(fileInfo.OriginalTileY, config.Size)
                 };
-
-                if (!config.WithBorders && TilesHelper.IsBorder(originalCoordinate, config.Size))
-                {
-                    LogTile(tileType, $"Skipping border {originalCoordinate} tile {fileName}");
-                    continue;
-                }
 
                 Coordinate targetCoordinate = new()
                 {

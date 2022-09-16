@@ -1,0 +1,43 @@
+{
+  "Maps": [
+    {
+      "Name": "PEI",
+      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\PEI",
+      "Size":"Medium",
+      "WithBorders": true,
+      "StartCoordinate": {
+        "X": 6,
+        "Y": 0
+      },
+      "ShiftX": 3072,
+      "ShiftY": -3072
+    },
+    {
+      "Name": "Washington",
+      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Washington",
+      "Size": "Medium",
+      "WithBorders": true,
+      "StartCoordinate": {
+        "X": 0,
+        "Y": 0
+      },
+      "ShiftX": -3072,
+      "ShiftY": -3072
+    },
+    {
+      "Name": "Russia",
+      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Russia",
+      "Size": "Large",
+      "WithBorders": true,
+      "StartCoordinate": {
+        "X": 0,
+        "Y": 4
+      },
+      "ShiftX": -2048,
+      "ShiftY": 2048
+    }
+  ],
+  "OutputMap": {
+    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMaps"
+  }
+}

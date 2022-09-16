@@ -24,5 +24,10 @@ namespace UnturnedMapMergeTool.Unturned.Unity
         public float z { get; set; }
 
         public static Vector3 one => new Vector3(1, 1, 1);
+
+        public override string ToString()
+        {
+            return $"[x: {x}, y: {y}, z: {z}]";
+        }
     }
 }

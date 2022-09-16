@@ -4,5 +4,8 @@
     {
         Medium,
         Insane,
+        Large,
+        Small,
+        Tiny
     }
 }
