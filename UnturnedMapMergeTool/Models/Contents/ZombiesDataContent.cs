@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using UnturnedMapMergeTool.Models.Contents.Zombies;
 using UnturnedMapMergeTool.Unturned;
@@ -7,11 +8,65 @@ namespace UnturnedMapMergeTool.Models.Contents
 {
     public class ZombiesDataContent
     {
+        public ZombiesDataContent(byte saveDataVersion, byte tablesCount)
+        {
+            SaveDataVersion = saveDataVersion;
+            TablesCount = tablesCount;
+
+            Tables = new();
+        }
+
+        public ZombiesDataContent()
+        {
+
+        }
+
         public byte SaveDataVersion { get; set; }
         public byte TablesCount { get; set; }
 
         public List<ZombieTableData> Tables { get; set; }
          
+        public void SaveToFile(string fileNamePath)
+        {
+            Block block = new();
+            block.writeByte(SaveDataVersion);
+            block.writeByte(TablesCount);
+
+            for (byte i = 0; i < TablesCount; i++)
+            {
+                ZombieTableData zombieTable = Tables[i];
+                block.writeColor(zombieTable.Color);
+                block.writeString(zombieTable.Name);
+                block.writeBoolean(zombieTable.IsMega);
+                block.writeUInt16(zombieTable.Health);
+                block.writeByte(zombieTable.Damage);
+                block.writeByte(zombieTable.LootIndex);
+                block.writeUInt16(zombieTable.LootId);
+                block.writeUInt32(zombieTable.XP);
+                block.writeSingle(zombieTable.Regen);
+                block.writeString(zombieTable.DifficultyGuid);
+
+                block.writeByte(zombieTable.SlotsCount);
+
+                for (byte j = 0; j < zombieTable.SlotsCount; j++)
+                {
+                    ZombieSlotData zombieSlot = zombieTable.Slots[j];
+                    block.writeSingle(zombieSlot.Chance);
+
+                    block.writeByte(zombieSlot.ClothesCount);
+
+                    for (byte k = 0; k < zombieSlot.ClothesCount; k++)
+                    {
+                        ZombieClothData zombieCloth = zombieSlot.Clothes[k];
+                        block.writeUInt16(zombieCloth.Item);
+                    }
+                }
+            }
+
+            byte[] bytes = block.getBytes(out _);
+            File.WriteAllBytes(fileNamePath, bytes);
+        }
+
         public static ZombiesDataContent FromFile(string fileNamePath)
         {
             byte[] bytes = File.ReadAllBytes(fileNamePath);

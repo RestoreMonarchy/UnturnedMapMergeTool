@@ -90,6 +90,8 @@ internal class Program
         flagsDataMergeTool.CombineAndSaveData(outputMap);
         //navigationsDataMergeTool.CombineAndSaveData(outputMap);
 
+        zombiesDataMergeTool.CombineAndSaveData(outputMap);
+
         Console.ReadKey();
     }
 }
