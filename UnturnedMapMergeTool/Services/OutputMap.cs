@@ -16,6 +16,30 @@ namespace UnturnedMapMergeTool.Services
         public void Preapare()
         {
             PrepareLandscapes();
+            PrepareSpawns();
+            PrepareLevel();
+        }
+
+        private void PrepareLevel()
+        {
+            string spawnsDirectory = CombinePath("Level");
+            if (Directory.Exists(spawnsDirectory))
+            {
+                Directory.Delete(spawnsDirectory, true);
+            }
+
+            Directory.CreateDirectory(spawnsDirectory);
+        }
+
+        private void PrepareSpawns()
+        {
+            string spawnsDirectory = CombinePath("Spawns");
+            if (Directory.Exists(spawnsDirectory))
+            {
+                Directory.Delete(spawnsDirectory, true);
+            }
+
+            Directory.CreateDirectory(spawnsDirectory);
         }
 
         private void PrepareLandscapes()
