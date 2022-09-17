@@ -1,16 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Serilog;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnturnedMapMergeTool.Abstractions;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Contents;
 using UnturnedMapMergeTool.Models.Contents.Faunas;
-using UnturnedMapMergeTool.Models.Contents.Players;
 using UnturnedMapMergeTool.Services;
 
 namespace UnturnedMapMergeTool.DataMergeTools.Spawns
