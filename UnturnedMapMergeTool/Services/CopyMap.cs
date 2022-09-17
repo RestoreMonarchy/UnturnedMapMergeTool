@@ -34,11 +34,18 @@ namespace UnturnedMapMergeTool.Services
         public byte MaterialShift { get; set; } = 0;
 
         // This doesn't work because there cannot be more than 10 materials (in the Roads.unity3d file) on one map
-        public byte ApplyMaterialShift(byte material)
+        public byte GetShiftedMaterialId(byte material)
         {
             return (byte)(material + MaterialShift);
         }
-        
+
+        public byte ZombieTypeShift { get; set; } = 0;
+
+        public byte GetShiftedZombieType(byte zombieType)
+        {
+            return (byte)(zombieType + ZombieTypeShift);
+        }
+
         // Used and necessary for NavigationsDataMergeTool
         public List<FlagData> Flags { get; set; }
         public int FlagsStartIndex { get; set; }

@@ -25,11 +25,15 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
             ZombiesDataContent content = new(saveDataVersion, count);
 
+            byte zombieType = 0;
             foreach (CopyMapData<ZombiesDataContent> dataItem in Data)
             {
+                dataItem.CopyMap.ZombieTypeShift = zombieType;
+
                 foreach (ZombieTableData zombieTable in dataItem.Content.Tables)
                 {
                     content.Tables.Add(zombieTable);
+                    zombieType++;
                 }
             }
 

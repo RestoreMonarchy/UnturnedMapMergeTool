@@ -53,6 +53,7 @@ internal class Program
         //NavigationsDataMergeTool navigationsDataMergeTool = new();
 
         ZombiesDataMergeTool zombiesDataMergeTool = new();
+        AnimalsDataMergeTool animalsDataMergeTool = new();
 
         Log.Information($"Start combining {config.Maps.Count} maps");
 
@@ -73,6 +74,7 @@ internal class Program
             //navigationsDataMergeTool.ReadData(copyMap);
 
             zombiesDataMergeTool.ReadData(copyMap);
+            animalsDataMergeTool.ReadData(copyMap);
 
             copyMaps.Add(copyMap);
 
@@ -91,6 +93,7 @@ internal class Program
         //navigationsDataMergeTool.CombineAndSaveData(outputMap);
 
         zombiesDataMergeTool.CombineAndSaveData(outputMap);
+        animalsDataMergeTool.CombineAndSaveData(outputMap);
 
         Console.ReadKey();
     }
