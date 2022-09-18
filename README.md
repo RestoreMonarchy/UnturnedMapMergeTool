@@ -3,6 +3,13 @@ Program for merging multiple unturned maps into one.
 Work in progress
 
 ### Currently Mergeable Files
+Landscape merge works by renaming and copying the files from the original map.  
+All of the `.dat` files I'm reading into objects, shifting the positions inside the files, combining and then saving into the output map directory.
+
+**Landscape**  
+* Heightmaps/*
+* Holes/*
+* Splatmaps/*
 
 **Spawns**
 * Fauna.dat
