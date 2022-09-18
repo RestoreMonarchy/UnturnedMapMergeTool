@@ -6,11 +6,11 @@
       "Size": "Medium",
       "WithBorders": false,
       "StartCoordinate": {
-        "X": 6,
+        "X": 1,
         "Y": 0
       },
-      "ShiftX": 3072,
-      "ShiftY": -3072
+      "ShiftX": 0,
+      "ShiftY": -1024
     },
     {
       "Name": "Washington",
@@ -19,22 +19,10 @@
       "WithBorders": false,
       "StartCoordinate": {
         "X": 0,
-        "Y": 0
+        "Y": 2
       },
-      "ShiftX": -3072,
-      "ShiftY": -3072
-    },
-    {
-      "Name": "Russia",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Russia",
-      "Size": "Large",
-      "WithBorders": true,
-      "StartCoordinate": {
-        "X": 0,
-        "Y": 4
-      },
-      "ShiftX": -2048,
-      "ShiftY": 2048
+      "ShiftX": -1024,
+      "ShiftY": 1024
     },
     {
       "Name": "Yukon",
@@ -42,15 +30,15 @@
       "Size": "Medium",
       "WithBorders": false,
       "StartCoordinate": {
-        "X": 6,
-        "Y": 3
+        "X": 2,
+        "Y": 2
       },
-      "ShiftX": 3072,
-      "ShiftY": 0
+      "ShiftX": 1024,
+      "ShiftY": 1024
     }
   ],
   "OutputMap": {
-    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMaps",
-    "Size": "Insane"
+    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMapsLarge",
+    "Size": "Large"
   }
 }

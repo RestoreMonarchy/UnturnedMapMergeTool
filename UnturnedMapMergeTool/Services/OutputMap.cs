@@ -13,6 +13,8 @@ namespace UnturnedMapMergeTool.Services
             this.config = config;
         }
 
+        public OutputMapConfig Config => config;
+
         public void Preapare()
         {
             PrepareLandscapes();

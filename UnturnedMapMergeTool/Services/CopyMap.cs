@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using UnturnedMapMergeTool.Helpers;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
@@ -58,7 +57,6 @@ namespace UnturnedMapMergeTool.Services
         // Used and necessary for NavigationsDataMergeTool
         public List<FlagData> Flags { get; set; }
         public int FlagsStartIndex { get; set; }
-
 
         public bool ShouldIncludePosition(Vector3 position) 
         {

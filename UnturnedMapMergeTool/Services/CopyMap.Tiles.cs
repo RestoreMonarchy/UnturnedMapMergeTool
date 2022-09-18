@@ -30,7 +30,7 @@ namespace UnturnedMapMergeTool.Services
             {
                 string fileName = Path.GetFileName(fileNamePath);
                 TileFileInfo fileInfo = TileFileInfo.FromFileName(fileName, tileType);
-
+                    
                 if (!config.WithBorders && TilesHelper.IsBorder(fileInfo.OriginalTileX, fileInfo.OriginalTileY, config.Size))
                 {
                     LogTile(tileType, $"Skipping border tile {fileName}");
@@ -49,8 +49,8 @@ namespace UnturnedMapMergeTool.Services
                     Y = originalCoordinate.Y + StartCoordinate.Y
                 };
 
-                int targetTileX = TilesHelper.IndexToTile(targetCoordinate.X, EMapSize.Insane);
-                int targetTileY = TilesHelper.IndexToTile(targetCoordinate.Y, EMapSize.Insane);
+                int targetTileX = TilesHelper.IndexToTile(targetCoordinate.X, outputMap.Config.Size);
+                int targetTileY = TilesHelper.IndexToTile(targetCoordinate.Y, outputMap.Config.Size);
 
                 string targetFileName = string.Format(fileInfo.FileNameFormat, targetTileX, targetTileY);
                 string targetFileNamePath = Path.Combine(outputDirectoryPath, targetFileName);
