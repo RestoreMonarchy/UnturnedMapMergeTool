@@ -15,9 +15,9 @@ namespace UnturnedMapMergeTool.Models.Contents
 
         }
 
-        public AnimalsDataContent(byte saveDataTreesVersion)
+        public AnimalsDataContent(byte saveDataVersion)
         {
-            SaveDataVersion = saveDataTreesVersion;
+            SaveDataVersion = saveDataVersion;
 
             ZombieRegions = new List<ZombieRegionData>();
 

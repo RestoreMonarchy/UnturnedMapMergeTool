@@ -58,6 +58,7 @@ internal class Program
         FaunaDataMergeTool faunaDataMergeTool = new();
         VehiclesDataMergeTool vehiclesDataMergeTool = new();
         ItemsDataMergeTool itemsDataMergeTool = new();
+        JarsDataMergeTool jarsDataMergeTool = new();
 
         Log.Information($"Start combining {config.Maps.Count} maps");
 
@@ -83,6 +84,7 @@ internal class Program
             faunaDataMergeTool.ReadData(copyMap);
             vehiclesDataMergeTool.ReadData(copyMap);
             itemsDataMergeTool.ReadData(copyMap);
+            jarsDataMergeTool.ReadData(copyMap);
 
             copyMaps.Add(copyMap);
 
@@ -106,6 +108,7 @@ internal class Program
         faunaDataMergeTool.CombineAndSaveData(outputMap);
         vehiclesDataMergeTool.CombineAndSaveData(outputMap);
         itemsDataMergeTool.CombineAndSaveData(outputMap);
+        jarsDataMergeTool.CombineAndSaveData(outputMap);
 
         Console.ReadKey();
     }
