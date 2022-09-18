@@ -46,6 +46,13 @@ namespace UnturnedMapMergeTool.Services
             return (byte)(zombieType + ZombieTypeShift);
         }
 
+        public byte ItemTypeShift { get; set; } = 0;
+
+        public byte GetShiftedItemType(byte itemType)
+        {
+            return (byte)(itemType + ItemTypeShift);
+        }
+
         // Used and necessary for NavigationsDataMergeTool
         public List<FlagData> Flags { get; set; }
         public int FlagsStartIndex { get; set; }
