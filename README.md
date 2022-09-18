@@ -1,11 +1,33 @@
-Insane: 10x10 (8x8) (-5, -4, -3, -2, -1, 0, 1, 2, 3, 4)
-Medium: 4x4 (2x2) (-2, -1, 0, 1)
-Large: 
+## Unturned Map Merge Tool
+Program for merging multiple unturned maps into one.  
+Work in progress
 
+### Currently Mergeable Files
 
-Germany: Large 6x6 (4x4) 
-Russia: Large 8x8 (4x4)
-Washington: Medium 4x4 (2x2)
-PEI: Medium 4x4 (2x2)
-Alpha Valley: Small 2x2 (1/4th of every tile)
+**Spawns**
+* Fauna.dat
+* Items.dat
+* Jars.dat
+* Players.dat
+* Vehicles.dat
+* Zombies.dat
+
+**Environment**
+* Bounds.dat
+* Flags.dat
+* Flags_Data.dat
+* Nodes.dat
+* Paths.dat
+* Roads.dat
+
+**Terrain**
+* Trees.dat
+
+**Level**
+* Buildables.dat
+* Objects.dat
+
+### Example board for the insane size map  
+This is an example board used to get right coordinates for the map you want to be generated from another  
+![](UnturnedMapMergeTool.jpg)
 
