@@ -102,6 +102,7 @@ internal class Program
         animalsDataMergeTool.CombineAndSaveData(outputMap);
         playersDataMergeTool.CombineAndSaveData(outputMap);
         faunaDataMergeTool.CombineAndSaveData(outputMap);
+        vehiclesDataMergeTool.CombineAndSaveData(outputMap);
 
         Console.ReadKey();
     }
