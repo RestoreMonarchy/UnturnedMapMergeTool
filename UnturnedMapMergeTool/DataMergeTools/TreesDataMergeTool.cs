@@ -27,6 +27,12 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                 foreach (TreeData treeData in copyMapBuildables)
                 {
+                    if (!dataItem.CopyMap.ShouldIncludePosition(treeData.Position))
+                    {
+                        //Log.Warning($"TREE: Skipping tree outside of the border");
+                        continue;
+                    }
+
                     TreeData shiftedTreeData = new()
                     {
                         Position = treeData.Position,

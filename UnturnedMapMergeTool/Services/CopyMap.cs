@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using UnturnedMapMergeTool.Helpers;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
 using UnturnedMapMergeTool.Models.Contents.Flags;
@@ -57,5 +59,10 @@ namespace UnturnedMapMergeTool.Services
         public List<FlagData> Flags { get; set; }
         public int FlagsStartIndex { get; set; }
 
+
+        public bool ShouldIncludePosition(Vector3 position) 
+        {
+            return config.WithBorders || !TilesHelper.IsBorder(position, config.Size);
+        }
     }
 }

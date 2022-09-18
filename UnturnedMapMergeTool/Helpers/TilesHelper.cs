@@ -59,5 +59,18 @@ namespace UnturnedMapMergeTool.Helpers
 
             return false;
         }
+
+        public static bool IsBorder(Vector3 position, EMapSize mapSize)
+        {
+            int min = MapTiles[mapSize].Min() * 1024;
+            int max = (MapTiles[mapSize].Max() + 1) * 1024;
+
+            if (position.z > max || position.z < min)
+                return true;
+            if (position.x > max || position.x < min)
+                return true;
+
+            return false;
+        }
     }
 }

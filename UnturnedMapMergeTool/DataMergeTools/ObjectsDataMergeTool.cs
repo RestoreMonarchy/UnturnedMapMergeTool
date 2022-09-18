@@ -7,6 +7,7 @@ using UnturnedMapMergeTool.Abstractions;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Contents;
 using UnturnedMapMergeTool.Models.Contents.Objects;
+using UnturnedMapMergeTool.Models.Contents.Trees;
 using UnturnedMapMergeTool.Services;
 using UnturnedMapMergeTool.Unturned;
 using UnturnedMapMergeTool.Unturned.Unity;
@@ -30,6 +31,12 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                 foreach (ObjectData objectData in copyMapObjects)
                 {
+                    if (!dataItem.CopyMap.ShouldIncludePosition(objectData.Position))
+                    {
+                        Log.Warning($"OBJECT: Skipping object outside of the border");
+                        continue;
+                    }
+
                     ObjectData shiftedObjectData = new()
                     {
                         Position = objectData.Position,
