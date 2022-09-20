@@ -19,7 +19,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
         public override void CombineAndSaveData(OutputMap outputMap)
         {
-            byte saveDataVersion = 2;
+            byte saveDataVersion = 8;
             int count = Data.Sum(x => x.Content.Nodes.Count);
             byte countByte = (byte)count;
 
@@ -34,7 +34,10 @@ namespace UnturnedMapMergeTool.DataMergeTools
                 }
             }
 
-            content.Nodes = content.Nodes.OrderBy(x => x.Type).ToList();
+            content.Nodes = content.Nodes.ToList();
+
+            // DEBUG
+            File.WriteAllText($"nodes_output.json", JsonConvert.SerializeObject(content, Formatting.Indented));
 
             string nodesSavePath = outputMap.CombinePath("Environment/Nodes.dat");
 

@@ -95,7 +95,7 @@ internal class Program
         buildablesDataMergeTool.CombineAndSaveData(outputMap);
         treesDataMergeTool.CombineAndSaveData(outputMap);
         roadsDataMergeTool.CombineAndSaveData(outputMap);
-        pathsDataMergeTool.CombineAndSaveData(outputMap);        
+        pathsDataMergeTool.CombineAndSaveData(outputMap);
         nodesDataMergeTool.CombineAndSaveData(outputMap);
         boundsDataMergeTool.CombineAndSaveData(outputMap);
         flagsDataDataMergeTool.CombineAndSaveData(outputMap);
