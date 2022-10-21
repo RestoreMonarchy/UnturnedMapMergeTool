@@ -15,7 +15,10 @@ internal class Program
     {
         Log.Logger = new LoggerConfiguration()
             .WriteTo.Console()
+            .WriteTo.File("log.txt")
             .CreateLogger();
+
+        Log.Information($"UnturnedMapMergeTool v{typeof(Program).Assembly.GetName().Version} has been loaded!");
 
         Config config;
         if (File.Exists("config.json"))
@@ -110,6 +113,8 @@ internal class Program
         itemsDataMergeTool.CombineAndSaveData(outputMap);
         jarsDataMergeTool.CombineAndSaveData(outputMap);
 
+        Log.Information($"Finished migrating {config.Maps.Count} maps!");
+        Log.Information("Press any key to exit the program...");
         Console.ReadKey();
     }
 }

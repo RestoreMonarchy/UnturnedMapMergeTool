@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Serilog;
 using UnturnedMapMergeTool.Models.Enums;
 
 namespace UnturnedMapMergeTool.Services
@@ -7,12 +7,12 @@ namespace UnturnedMapMergeTool.Services
     {
         private void LogTile(ETileType tileType, string message)
         {
-            Log($"[{tileType}] {message}");
+            LogInformation($"[{tileType}] {message}");
         }
 
-        private void Log(string message)
+        private void LogInformation(string message)
         {
-            Console.WriteLine($"[{config.Name}]: {message}");
+            Log.Information($"[{config.Name}]: {message}");
         }
     }
 }

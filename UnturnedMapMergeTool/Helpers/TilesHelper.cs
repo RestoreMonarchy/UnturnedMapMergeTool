@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Enums;
 using UnturnedMapMergeTool.Unturned.Unity;
 
