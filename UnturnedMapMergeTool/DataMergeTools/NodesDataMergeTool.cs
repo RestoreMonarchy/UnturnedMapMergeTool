@@ -29,11 +29,22 @@ namespace UnturnedMapMergeTool.DataMergeTools
             {
                 foreach (NodeData node in dataItem.Content.Nodes)
                 {
+                    if (dataItem.CopyMap.Config.IgnoreAirdropNodes && node.Type == 5)
+                    {
+                        continue;
+                    }
+
+                    if (dataItem.CopyMap.Config.IgnoreArenaNodes && node.Type == 3)
+                    {
+                        continue;
+                    }
+
                     dataItem.CopyMap.ApplyPositionShift(node.Point);
                     content.Nodes.Add(node);
                 }
             }
 
+            content.Count = (byte)content.Nodes.Count;
             content.Nodes = content.Nodes.ToList();
 
             // DEBUG

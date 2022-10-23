@@ -11,6 +11,7 @@ using UnturnedMapMergeTool.Services;
 
 internal class Program
 {
+
     private static void Main(string[] args)
     {
         Log.Logger = new LoggerConfiguration()
@@ -25,7 +26,8 @@ internal class Program
         {
             string configJson = File.ReadAllText("config.json");
             config = JsonConvert.DeserializeObject<Config>(configJson);
-        } else
+        }
+        else
         {
             config = new();
             config.LoadDefaultValues();
@@ -36,7 +38,20 @@ internal class Program
             return;
         }
 
+        try
+        {
+            Start(config);
+        } catch (Exception e)
+        {
+            Log.Error(e, "");
+        }
         
+        Log.Information("Press any key to exit the program...");
+        Console.ReadKey();
+    }
+
+    private static void Start(Config config)
+    {
         OutputMap outputMap = new(config.OutputMap);
 
         // Delete existing directories and create empty
@@ -72,7 +87,7 @@ internal class Program
             objectsDataMergeTool.ReadData(copyMap);
             buildablesDataMergeTool.ReadData(copyMap);
             treesDataMergeTool.ReadData(copyMap);
-            
+
             roadsDataMergeTool.ReadData(copyMap);
             pathsDataMergeTool.ReadData(copyMap);
             nodesDataMergeTool.ReadData(copyMap);
@@ -114,7 +129,5 @@ internal class Program
         jarsDataMergeTool.CombineAndSaveData(outputMap);
 
         Log.Information($"Finished migrating {config.Maps.Count} maps!");
-        Log.Information("Press any key to exit the program...");
-        Console.ReadKey();
     }
 }

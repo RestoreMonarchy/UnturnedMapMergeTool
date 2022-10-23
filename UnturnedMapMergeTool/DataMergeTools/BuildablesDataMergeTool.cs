@@ -41,6 +41,13 @@ namespace UnturnedMapMergeTool.DataMergeTools
                     Regions.tryGetCoordinate(shiftedBuildableData.Position, out byte regionX, out byte regionY);
 
                     BuildableRegionData objectRegionData = content.BuildableRegions.FirstOrDefault(x => x.RegionX == regionX && x.RegionY == regionY);
+
+                    if (objectRegionData == null)
+                    {
+                        Log.Warning("Object region not found for the shifted region X: {0} Y: {1}", regionX, regionY);
+                        continue;
+                    }
+
                     objectRegionData.Buildables.Add(shiftedBuildableData);
                     objectRegionData.Count++;
                 }

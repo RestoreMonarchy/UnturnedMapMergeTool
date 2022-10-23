@@ -27,7 +27,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
             foreach (CopyMapData<ObjectDataContent> dataItem in Items)
             {
-                IEnumerable<ObjectData> copyMapObjects = dataItem.Content.ObjectRegions.SelectMany(x => x.Objects);
+                List<ObjectData> copyMapObjects = dataItem.Content.ObjectRegions.SelectMany(x => x.Objects).ToList();
 
                 foreach (ObjectData objectData in copyMapObjects)
                 {
