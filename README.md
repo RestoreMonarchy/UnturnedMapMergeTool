@@ -3,7 +3,10 @@ Program for merging multiple unturned maps into one.
 Work in progress
 
 ### Example maps created using this tool
-* [Triple Classic (Peyukton)](https://steamcommunity.com/sharedfiles/filedetails/?id=2867004062) by adLay
+* [Triple Classic (Peyukton)](https://steamcommunity.com/sharedfiles/filedetails/?id=2867004062) by [adLay](https://steamcommunity.com/profiles/76561199059647240)
+* [AMIO (All Maps in One)](https://steamcommunity.com/workshop/filedetails/?id=2877846948) by [landsQuid](https://steamcommunity.com/id/BearFlewOverTheOcean)
+* [Trilogy (Triple Classic Remastered)](https://steamcommunity.com/sharedfiles/filedetails/?id=2876376295) by [landsQuid](https://steamcommunity.com/id/BearFlewOverTheOcean)
+* [Anomaly](https://steamcommunity.com/workshop/filedetails/?id=2880116065) by [landsQuid](https://steamcommunity.com/id/BearFlewOverTheOcean)
 
 ### Currently Mergeable Files
 Landscape merge works by renaming and copying the files from the original map.  
