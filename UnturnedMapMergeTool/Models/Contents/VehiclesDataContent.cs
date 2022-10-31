@@ -127,7 +127,7 @@ namespace UnturnedMapMergeTool.Models.Contents
             content.SpawnpointsCount = river.readUInt16();
             content.Spawnpoints = new();
 
-            for (byte l = 0; l < content.SpawnpointsCount; l++)
+            for (ushort l = 0; l < content.SpawnpointsCount; l++)
             {
                 VehicleSpawnpointData vehicleSpawnpoint = new();
                 vehicleSpawnpoint.Type = river.readByte();
