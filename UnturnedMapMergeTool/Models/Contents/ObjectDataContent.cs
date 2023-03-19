@@ -50,7 +50,7 @@ namespace UnturnedMapMergeTool.Models.Contents
         public void SaveToFile(string fileNamePath)
         {
             River river = new(fileNamePath);
-            river.writeByte(SaveDataVersion);
+            river.writeByte(11);
             river.writeUInt32(AvailableInstanceId);
 
             for (byte i = 0; i < Regions.WORLD_SIZE; i++)
@@ -69,6 +69,8 @@ namespace UnturnedMapMergeTool.Models.Contents
                         river.writeGUID(objectData.Guid);
                         river.writeByte(objectData.PlacementOrigin);
                         river.writeUInt32(objectData.InstanceId);
+                        river.writeGUID(objectData.CustomMaterialOverride);
+                        river.writeInt32(objectData.MaterialIndexOverride);
                     }
                 }
             }
@@ -155,6 +157,12 @@ namespace UnturnedMapMergeTool.Models.Contents
                         } else
                         {
                             objectData.InstanceId = content.AvailableInstanceId++;
+                        }
+
+                        if (content.SaveDataVersion >= 11)
+                        {
+                            objectData.CustomMaterialOverride = river.readGUID();
+                            objectData.MaterialIndexOverride =  river.readInt32();
                         }
 
                         region.Objects.Add(objectData);

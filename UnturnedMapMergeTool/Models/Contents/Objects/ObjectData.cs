@@ -12,5 +12,7 @@ namespace UnturnedMapMergeTool.Models.Contents.Objects
         public Guid Guid { get; set; }
         public byte PlacementOrigin { get; set; }
         public uint InstanceId { get; set; }
+        public Guid CustomMaterialOverride { get; set; }
+        public int MaterialIndexOverride { get; set; }
     }
 }
