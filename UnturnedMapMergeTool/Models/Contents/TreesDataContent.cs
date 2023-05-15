@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnturnedMapMergeTool.Models.Contents.Trees;
 using UnturnedMapMergeTool.Unturned;
@@ -53,6 +54,7 @@ namespace UnturnedMapMergeTool.Models.Contents
                     foreach (TreeData treeData in regionData.Trees)
                     {
                         river.writeUInt16(treeData.AssetId);
+                        river.writeGUID(treeData.Guid);
                         river.writeSingleVector3(treeData.Position);
                         river.writeBoolean(treeData.IsGenerated);                        
                     }
@@ -91,6 +93,14 @@ namespace UnturnedMapMergeTool.Models.Contents
                         TreeData treeData = new();
 
                         treeData.AssetId = river.readUInt16();
+                        if (content.SaveDataTreesVersion > 6)
+                        {
+                            treeData.Guid = river.readGUID();
+                        } else
+                        {
+                            treeData.Guid = Guid.Empty;
+                        }
+                        
                         treeData.Position = river.readSingleVector3();
                         treeData.IsGenerated = river.readBoolean();
                         

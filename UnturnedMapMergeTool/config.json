@@ -1,100 +1,22 @@
 {
   "Maps": [
     {
-      "Name": "Russia",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Russia",
-      "Size": "Large",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 0,
-        "Y": 4
-      },
-      "ShiftX": -2048,
-      "ShiftY": 2048,
-      "IgnoreAirdropNodes": true
-    },
-    {
-      "Name": "Hawaii",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Hawaii_",
-      "Size": "Large",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 0,
-        "Y": 0
-      },
-      "ShiftX": -2048,
-      "ShiftY": -2048,
-      "IgnoreAirdropNodes": true
-    },
-    {
-      "Name": "Canada",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Canada",
-      "Size": "Large",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 4,
-        "Y": 2
-      },
-      "ShiftX": 2048,
-      "ShiftY": 0,
-      "IgnoreAirdropNodes": true
-    },
-    {
-      "Name": "PEI",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\PEI",
+      "Name": "TespyRP (Tribute)",
+      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\TespyRP (Tribute)",
       "Size": "Medium",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 6,
-        "Y": 0
-      },
-      "ShiftX": 3072,
-      "ShiftY": -3072,
-      "IgnoreAirdropNodes": true
-    },
-    {
-      "Name": "Washington",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Washington",
-      "Size": "Medium",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 4,
-        "Y": 0
-      },
-      "ShiftX": 1024,
-      "ShiftY": -3072,
-      "IgnoreAirdropNodes": true
-    },
-    {
-      "Name": "Yukon",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Yukon",
-      "Size": "Medium",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 4,
-        "Y": 6
-      },
-      "ShiftX": 1024,
-      "ShiftY": 3072,
-      "IgnoreAirdropNodes": true
-    },
-    {
-      "Name": "Monolith",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Monolith",
-      "Size": "Small",
-      "WithBorders": false,
+      "WithBorders": true,
       "StartCoordinate": {
         "X": 6,
         "Y": 6
       },
       "ShiftX": 3072,
       "ShiftY": 3072,
-      "IgnoreAirdropNodes": true,
-      "IgnoreArenaNodes": true
+      "IgnoreAirdropNodes": false,
+      "IgnoreArenaNodes": false
     }
   ],
   "OutputMap": {
-    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\EMIO",
+    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\SecondCogMap",
     "Size": "Insane"
   }
 }

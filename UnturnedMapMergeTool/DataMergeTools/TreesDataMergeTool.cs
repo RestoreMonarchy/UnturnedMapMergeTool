@@ -36,6 +36,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
                     TreeData shiftedTreeData = new()
                     {
                         Position = treeData.Position,
+                        Guid = treeData.Guid,
                         AssetId = treeData.AssetId,
                         IsGenerated = treeData.IsGenerated
                     };
