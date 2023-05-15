@@ -3,11 +3,9 @@ using Serilog;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using UnturnedMapMergeTool.Abstractions;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Contents;
-using UnturnedMapMergeTool.Models.Contents.Flags;
 using UnturnedMapMergeTool.Services;
 
 namespace UnturnedMapMergeTool.DataMergeTools
@@ -24,6 +22,11 @@ namespace UnturnedMapMergeTool.DataMergeTools
                 for (int i = 0; i < dataItem.Content.Count; i++)
                 {
                     NavigationsDataContent content = dataItem.Content[i];
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(content.ForcedBoundsCenter))
+                    {
+                        continue;
+                    }
+
                     dataItem.CopyMap.ApplyPositionShift(content.ForcedBoundsCenter);
 
                     int index = dataItem.CopyMap.FlagsStartIndex + i;

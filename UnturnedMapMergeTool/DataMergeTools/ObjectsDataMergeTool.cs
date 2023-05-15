@@ -37,6 +37,11 @@ namespace UnturnedMapMergeTool.DataMergeTools
                         continue;
                     }
 
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(objectData.Position))
+                    {
+                        continue;
+                    }
+
                     ObjectData shiftedObjectData = new()
                     {
                         Position = objectData.Position,
@@ -46,7 +51,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
                         PlacementOrigin = objectData.PlacementOrigin,
                         Rotation = objectData.Rotation,
                         InstanceId = 0
-                    };
+                    };                    
 
                     dataItem.CopyMap.ApplyPositionShift(shiftedObjectData.Position);
 

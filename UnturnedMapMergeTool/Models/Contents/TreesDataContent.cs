@@ -11,10 +11,7 @@ namespace UnturnedMapMergeTool.Models.Contents
         public byte SaveDataTreesVersion { get; set; }
         public List<TreeRegionData> TreeRegions { get; set; }
 
-        public TreesDataContent()
-        {
-
-        }
+        public TreesDataContent() { }
 
         public TreesDataContent(byte saveDataTreesVersion)
         {
@@ -93,12 +90,12 @@ namespace UnturnedMapMergeTool.Models.Contents
                         TreeData treeData = new();
 
                         treeData.AssetId = river.readUInt16();
-                        if (content.SaveDataTreesVersion > 6)
-                        {
-                            treeData.Guid = river.readGUID();
-                        } else
+                        if (content.SaveDataTreesVersion < 6)
                         {
                             treeData.Guid = Guid.Empty;
+                        } else
+                        {
+                            treeData.Guid = river.readGUID();
                         }
                         
                         treeData.Position = river.readSingleVector3();

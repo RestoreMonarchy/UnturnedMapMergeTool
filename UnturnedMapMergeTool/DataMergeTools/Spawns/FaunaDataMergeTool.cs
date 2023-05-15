@@ -36,6 +36,11 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
                 foreach (AnimalSpawnpointData animalSpawnPoint in dataItem.Content.SpawnPoints)
                 {
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(animalSpawnPoint.Point))
+                    {
+                        continue;
+                    }
+
                     animalSpawnPoint.Type = (byte)(animalSpawnPoint.Type + startTableId);
                     dataItem.CopyMap.ApplyPositionShift(animalSpawnPoint.Point);
                     content.SpawnPoints.Add(animalSpawnPoint);

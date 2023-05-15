@@ -10,9 +10,19 @@ namespace UnturnedMapMergeTool.Services
             LogInformation($"[{tileType}] {message}");
         }
 
+        private void LogTileWarning(ETileType tileType, string message)
+        {
+            LogWarning($"[{tileType}] {message}");
+        }
+
         private void LogInformation(string message)
         {
             Log.Information($"[{config.Name}]: {message}");
+        }
+        
+        private void LogWarning(string message)
+        {
+            Log.Warning($"[{config.Name}]: {message}");
         }
     }
 }

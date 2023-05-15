@@ -18,7 +18,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
         public override void CombineAndSaveData(OutputMap outputMap)
         {
-            byte saveDataVersion = 5;
+            byte saveDataVersion = 6;
             TreesDataContent content = new(saveDataVersion);
 
             foreach (CopyMapData<TreesDataContent> dataItem in Data)
@@ -27,9 +27,8 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                 foreach (TreeData treeData in copyMapBuildables)
                 {
-                    if (!dataItem.CopyMap.ShouldIncludePosition(treeData.Position))
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(treeData.Position))
                     {
-                        //Log.Warning($"TREE: Skipping tree outside of the border");
                         continue;
                     }
 

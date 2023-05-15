@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using UnturnedMapMergeTool.Helpers;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Enums;
@@ -30,18 +31,27 @@ namespace UnturnedMapMergeTool.Services
             {
                 string fileName = Path.GetFileName(fileNamePath);
                 TileFileInfo fileInfo = TileFileInfo.FromFileName(fileName, tileType);
-                    
+
                 if (!config.WithBorders && TilesHelper.IsBorder(fileInfo.OriginalTileX, fileInfo.OriginalTileY, config.Size))
                 {
                     LogTile(tileType, $"Skipping border tile {fileName}");
                     continue;
-                }
+                }              
 
                 Coordinate originalCoordinate = new()
                 {
                     X = TilesHelper.TileToIndex(fileInfo.OriginalTileX, config.Size),
                     Y = TilesHelper.TileToIndex(fileInfo.OriginalTileY, config.Size)
                 };
+
+                if (config.BypassTiles != null && config.BypassTiles.Length > 0)
+                {
+                    if (config.BypassTiles.Contains(originalCoordinate))
+                    {
+                        LogTileWarning(tileType, $"The tile {originalCoordinate} was on the bypass list");
+                        continue;
+                    }
+                }
 
                 Coordinate targetCoordinate = new()
                 {

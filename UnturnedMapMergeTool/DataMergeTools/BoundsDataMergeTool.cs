@@ -27,6 +27,11 @@ namespace UnturnedMapMergeTool.DataMergeTools
             {
                 foreach (BoundData bound in dataItem.Content.Bounds)
                 {
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(bound.Center))
+                    {
+                        continue;
+                    }
+
                     dataItem.CopyMap.ApplyPositionShift(bound.Center);
                     content.Bounds.Add(bound);
                 }

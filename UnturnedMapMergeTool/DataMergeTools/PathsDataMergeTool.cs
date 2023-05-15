@@ -7,6 +7,7 @@ using System.Linq;
 using UnturnedMapMergeTool.Abstractions;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Contents;
+using UnturnedMapMergeTool.Models.Contents.Objects;
 using UnturnedMapMergeTool.Models.Contents.Paths;
 using UnturnedMapMergeTool.Models.Contents.Trees;
 using UnturnedMapMergeTool.Services;
@@ -28,21 +29,51 @@ namespace UnturnedMapMergeTool.DataMergeTools
             {
                 foreach (PathLineData pathLine in dataItem.Content.PathLines)
                 {
+                    PathLineData shiftedPathLine = new()
+                    {
+                        Material = pathLine.Material,
+                        Joints = new(),
+                        NewLoop = pathLine.NewLoop
+                    };
+
                     //pathLine.Material = dataItem.CopyMap.ApplyMaterialShift(pathLine.Material);
                     foreach (PathJointData pathJoint in pathLine.Joints)
                     {
-                        dataItem.CopyMap.ApplyPositionShift(pathJoint.Vertex);
+                        PathJointData shiftedPathJoint = new()
+                        {
+                            Tangents = pathJoint.Tangents,
+                            IgnoreTerrain = pathJoint.IgnoreTerrain,
+                            Offset = pathJoint.Offset,
+                            RoadMode = pathJoint.RoadMode,
+                            Vertex = pathJoint.Vertex
+                        };
+
+                        if (dataItem.CopyMap.IsOriginalPositionBypassed(pathJoint.Vertex))
+                        {
+                            continue;
+                        }
+
+                        dataItem.CopyMap.ApplyPositionShift(shiftedPathJoint.Vertex);
+                        shiftedPathLine.Joints.Add(shiftedPathJoint);
                     }
 
-                    content.PathLines.Add(pathLine);
+
+                    shiftedPathLine.Count = (ushort)shiftedPathLine.Joints.Count;
+
+                    if (shiftedPathLine.Count > 0)
+                    {
+                        content.PathLines.Add(shiftedPathLine);
+                    }                    
                 }
+
+                content.Count = (ushort)content.PathLines.Count;
             }
 
             string pathsSavePath = outputMap.CombinePath("Environment/Paths.dat");
 
             content.SaveToFile(pathsSavePath);
 
-            Log.Information($"Combined and saved {content.PathLines.Count} path lines and {content.PathLines.Sum(x => x.Count)}");
+            Log.Information($"Combined and saved {content.PathLines.Count} path lines and {content.PathLines.Sum(x => x.Count)} path joints");
         }
 
         public override void ReadData(CopyMap copyMap)

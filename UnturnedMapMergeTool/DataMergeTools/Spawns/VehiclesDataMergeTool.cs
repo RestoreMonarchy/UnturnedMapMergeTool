@@ -38,6 +38,11 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
                 foreach (VehicleSpawnpointData vehicleSpawnpoint in dataItem.Content.Spawnpoints)
                 {
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(vehicleSpawnpoint.Point))
+                    {
+                        continue;
+                    }
+
                     vehicleSpawnpoint.Type = (byte)(vehicleSpawnpoint.Type + startTableId);
                     dataItem.CopyMap.ApplyPositionShift(vehicleSpawnpoint.Point);
                     content.Spawnpoints.Add(vehicleSpawnpoint);

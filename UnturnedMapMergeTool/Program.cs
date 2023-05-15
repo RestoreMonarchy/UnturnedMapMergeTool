@@ -66,7 +66,6 @@ internal class Program
         PathsDataMergeTool pathsDataMergeTool = new();
         NodesDataMergeTool nodesDataMergeTool = new();
         BoundsDataMergeTool boundsDataMergeTool = new();
-        FlagsDataDataMergeTool flagsDataDataMergeTool = new();
         FlagsDataMergeTool flagsDataMergeTool = new();
         //NavigationsDataMergeTool navigationsDataMergeTool = new();
 
@@ -92,7 +91,6 @@ internal class Program
             pathsDataMergeTool.ReadData(copyMap);
             nodesDataMergeTool.ReadData(copyMap);
             boundsDataMergeTool.ReadData(copyMap);
-            flagsDataDataMergeTool.ReadData(copyMap);
             flagsDataMergeTool.ReadData(copyMap);
             //navigationsDataMergeTool.ReadData(copyMap);
 
@@ -116,7 +114,6 @@ internal class Program
         pathsDataMergeTool.CombineAndSaveData(outputMap);
         nodesDataMergeTool.CombineAndSaveData(outputMap);
         boundsDataMergeTool.CombineAndSaveData(outputMap);
-        flagsDataDataMergeTool.CombineAndSaveData(outputMap);
         flagsDataMergeTool.CombineAndSaveData(outputMap);
         //navigationsDataMergeTool.CombineAndSaveData(outputMap);
 

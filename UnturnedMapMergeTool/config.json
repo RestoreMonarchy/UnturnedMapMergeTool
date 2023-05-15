@@ -1,22 +1,32 @@
 {
   "Maps": [
     {
-      "Name": "TespyRP (Tribute)",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\TespyRP (Tribute)",
+      "Name": "Yukon",
+      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Yukon",
       "Size": "Medium",
-      "WithBorders": true,
+      "WithBorders": false,
       "StartCoordinate": {
-        "X": 6,
-        "Y": 6
+        "X": 0,
+        "Y": 0
       },
-      "ShiftX": 3072,
-      "ShiftY": 3072,
+      "ShiftX": -1024,
+      "ShiftY": -1024,
       "IgnoreAirdropNodes": false,
-      "IgnoreArenaNodes": false
+      "IgnoreArenaNodes": false,
+      "BypassTiles": [
+        {
+          "X": 1,
+          "Y": 0
+        },
+        {
+          "X": 1,
+          "Y": 1
+        }
+      ]
     }
   ],
   "OutputMap": {
-    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\SecondCogMap",
-    "Size": "Insane"
+    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\RussiaTrilogy",
+    "Size": "Large"
   }
 }

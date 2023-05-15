@@ -9,5 +9,20 @@
         {
             return $"[X: {X}, Y: {Y}]";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Coordinate coordinate)
+            {
+                return X == coordinate.X && Y == coordinate.Y;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return X.GetHashCode() ^ Y.GetHashCode();
+        }
     }
 }

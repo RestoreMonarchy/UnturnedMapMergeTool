@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Serilog;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +7,6 @@ using UnturnedMapMergeTool.Abstractions;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Contents;
 using UnturnedMapMergeTool.Models.Contents.Nodes;
-using UnturnedMapMergeTool.Models.Contents.Roads;
 using UnturnedMapMergeTool.Services;
 
 namespace UnturnedMapMergeTool.DataMergeTools
@@ -35,6 +33,11 @@ namespace UnturnedMapMergeTool.DataMergeTools
                     }
 
                     if (dataItem.CopyMap.Config.IgnoreArenaNodes && node.Type == 3)
+                    {
+                        continue;
+                    }
+
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(node.Point))
                     {
                         continue;
                     }

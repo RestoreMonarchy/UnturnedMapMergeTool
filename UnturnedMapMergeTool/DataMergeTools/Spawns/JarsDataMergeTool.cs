@@ -28,6 +28,11 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
                 foreach (ItemSpawnpointData itemSpawnpoint in itemSpawnpoints)
                 {
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(itemSpawnpoint.Point))
+                    {
+                        continue;
+                    }
+
                     ItemSpawnpointData shiftedItemSpawnpoint = new()
                     {
                         Point = itemSpawnpoint.Point,

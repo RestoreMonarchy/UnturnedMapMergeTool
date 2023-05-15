@@ -14,6 +14,7 @@ using UnturnedMapMergeTool.Models.Contents.Zombies;
 using UnturnedMapMergeTool.Models.Contents.Animals;
 using UnturnedMapMergeTool.Models.Contents.Trees;
 using UnturnedMapMergeTool.Unturned;
+using UnturnedMapMergeTool.Models.Contents.Objects;
 
 namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 {
@@ -33,6 +34,11 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
                 foreach (ZombieSpawnpointData zombieSpawnpoint in zombieSpawnpoints)
                 {
+                    if (dataItem.CopyMap.IsOriginalPositionBypassed(zombieSpawnpoint.Point))
+                    {
+                        continue;
+                    }
+
                     ZombieSpawnpointData shiftedZombieSpawnpoint = new()
                     {
                         Point = zombieSpawnpoint.Point,

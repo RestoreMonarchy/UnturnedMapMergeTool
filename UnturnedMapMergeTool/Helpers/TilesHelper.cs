@@ -43,6 +43,15 @@ namespace UnturnedMapMergeTool.Helpers
             };
         }
 
+        public static int TileToShift(int tile, EMapSize mapSize)
+        {
+            return mapSize switch
+            {
+                EMapSize.Medium => tile - 1,
+                _ => throw new NotSupportedException($"{mapSize} map size not supported")
+            };
+        }
+
         public static bool IsBorder(int tileX, int tileY, EMapSize mapSize)
         {
             if (!MapTiles[mapSize].Contains(tileX))

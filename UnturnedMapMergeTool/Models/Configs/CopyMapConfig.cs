@@ -13,5 +13,6 @@ namespace UnturnedMapMergeTool.Models.Configs
         public int ShiftY { get; set; }
         public bool IgnoreAirdropNodes { get; set; }
         public bool IgnoreArenaNodes { get; set; }
+        public Coordinate[] BypassTiles { get; set; }
     }
 }

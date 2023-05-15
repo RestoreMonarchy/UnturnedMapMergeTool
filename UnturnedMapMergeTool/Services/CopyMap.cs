@@ -4,6 +4,7 @@ using UnturnedMapMergeTool.Helpers;
 using UnturnedMapMergeTool.Models;
 using UnturnedMapMergeTool.Models.Configs;
 using UnturnedMapMergeTool.Models.Contents.Flags;
+using UnturnedMapMergeTool.Models.Enums;
 using UnturnedMapMergeTool.Unturned.Unity;
 
 namespace UnturnedMapMergeTool.Services
@@ -25,6 +26,31 @@ namespace UnturnedMapMergeTool.Services
         public CopyMapConfig Config => config;
 
         private Coordinate StartCoordinate => config.StartCoordinate;
+
+        public bool IsOriginalPositionBypassed(Vector3 position)
+        {
+            if (!ShouldIncludePosition(position))
+            {
+                return true;
+            }
+
+            foreach (Coordinate coordinate in config.BypassTiles)
+            {
+                int shiftX = TilesHelper.TileToShift(coordinate.X, config.Size);
+                int shiftY = TilesHelper.TileToShift(coordinate.Y, config.Size);
+                int xMin = shiftX * 1024;
+                int xMax = (shiftX + 1) * 1024;
+                int yMin = shiftY * 1024;
+                int yMax = (shiftY + 1) * 1024;
+
+                if ((xMin <= position.x && xMax >= position.x) && (yMin <= position.z && yMax >= position.z))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         public void ApplyPositionShift(Vector3 position)
         {
