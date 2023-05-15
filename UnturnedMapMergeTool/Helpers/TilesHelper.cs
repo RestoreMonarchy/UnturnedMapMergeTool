@@ -47,7 +47,11 @@ namespace UnturnedMapMergeTool.Helpers
         {
             return mapSize switch
             {
+                EMapSize.Tiny => tile - 1,
+                EMapSize.Small => tile - 1,
                 EMapSize.Medium => tile - 1,
+                EMapSize.Large => tile - 2,
+                EMapSize.Insane => tile - 4,
                 _ => throw new NotSupportedException($"{mapSize} map size not supported")
             };
         }

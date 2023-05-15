@@ -34,6 +34,11 @@ namespace UnturnedMapMergeTool.Services
                 return true;
             }
 
+            if (config.BypassTiles == null)
+            {
+                return false;
+            }
+
             foreach (Coordinate coordinate in config.BypassTiles)
             {
                 int shiftX = TilesHelper.TileToShift(coordinate.X, config.Size);
