@@ -1,86 +1,6 @@
 {
   "Maps": [
     {
-      "Name": "Yukon",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Yukon",
-      "Size": "Medium",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 0,
-        "Y": 0
-      },
-      "ShiftX": -1024,
-      "ShiftY": -1024,
-      "IgnoreAirdropNodes": false,
-      "IgnoreArenaNodes": false,
-      "BypassTiles": [
-        {
-          "X": 1,
-          "Y": 0
-        },
-        {
-          "X": 1,
-          "Y": 1
-        }
-      ]
-    },
-    {
-      "Name": "Russia",
-      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Russia",
-      "Size": "Large",
-      "WithBorders": false,
-      "StartCoordinate": {
-        "X": 0,
-        "Y": 0
-      },
-      "ShiftX": 0,
-      "ShiftY": 0,
-      "IgnoreAirdropNodes": false,
-      "IgnoreArenaNodes": false,
-      "BypassTiles": [
-        {
-          "X": 0,
-          "Y": 0
-        },
-        {
-          "X": 0,
-          "Y": 1
-        },
-        {
-          "X": 1,
-          "Y": 0
-        },
-        {
-          "X": 1,
-          "Y": 1
-        },
-        {
-          "X": 2,
-          "Y": 0
-        },
-        {
-          "X": 2,
-          "Y": 1
-        },
-        {
-          "X": 2,
-          "Y": 2
-        },
-        {
-          "X": 2,
-          "Y": 3
-        },
-        {
-          "X": 3,
-          "Y": 2
-        },
-        {
-          "X": 3,
-          "Y": 3
-        }
-      ]
-    },
-    {
       "Name": "PEI",
       "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\PEI",
       "Size": "Medium",
@@ -92,11 +12,27 @@
       "ShiftX": 0,
       "ShiftY": -1024,
       "IgnoreAirdropNodes": false,
-      "IgnoreArenaNodes": false
+      "IgnoreArenaNodes": false,
+      "BypassTiles": []
     },
     {
       "Name": "Washington",
       "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Washington",
+      "Size": "Medium",
+      "WithBorders": false,
+      "StartCoordinate": {
+        "X": 0,
+        "Y": 2
+      },
+      "ShiftX": -1024,
+      "ShiftY": 1024,
+      "IgnoreAirdropNodes": false,
+      "IgnoreArenaNodes": false,
+      "BypassTiles": []
+    },
+    {
+      "Name": "Yukon",
+      "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\Yukon",
       "Size": "Medium",
       "WithBorders": false,
       "StartCoordinate": {
@@ -106,11 +42,12 @@
       "ShiftX": 1024,
       "ShiftY": 1024,
       "IgnoreAirdropNodes": false,
-      "IgnoreArenaNodes": false
+      "IgnoreArenaNodes": false,
+      "BypassTiles": []
     }
   ],
   "OutputMap": {
-    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\RussiaTrilogy",
+    "Path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Unturned\\Maps\\MergedMaps",
     "Size": "Large"
   }
 }
