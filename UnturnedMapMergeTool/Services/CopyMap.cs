@@ -93,5 +93,10 @@ namespace UnturnedMapMergeTool.Services
         {
             return config.WithBorders || !TilesHelper.IsBorder(position, config.Size);
         }
+
+        public bool IsOutputMapBorder(Vector3 position)
+        {
+            return TilesHelper.IsBorder(position, outputMap.Config.Size);
+        }
     }
 }

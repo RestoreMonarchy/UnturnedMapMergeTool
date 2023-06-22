@@ -35,6 +35,11 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
                     dataItem.CopyMap.ApplyPositionShift(playerSpawn.Point);
 
+                    if (dataItem.CopyMap.IsOutputMapBorder(playerSpawn.Point))
+                    {
+                        continue;
+                    }
+
                     content.Spawns.Add(playerSpawn);
                 }
             }

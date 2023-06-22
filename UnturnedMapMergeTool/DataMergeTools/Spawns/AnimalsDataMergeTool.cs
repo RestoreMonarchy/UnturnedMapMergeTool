@@ -46,6 +46,12 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
                     };
 
                     dataItem.CopyMap.ApplyPositionShift(shiftedZombieSpawnpoint.Point);
+
+                    if (dataItem.CopyMap.IsOutputMapBorder(shiftedZombieSpawnpoint.Point))
+                    {
+                        continue;
+                    }
+
                     shiftedZombieSpawnpoint.Type = dataItem.CopyMap.GetShiftedZombieType(shiftedZombieSpawnpoint.Type);
 
                     if (!Regions.tryGetCoordinate(shiftedZombieSpawnpoint.Point, out byte regionX, out byte regionY))

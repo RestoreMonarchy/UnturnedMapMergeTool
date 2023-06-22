@@ -43,6 +43,12 @@ namespace UnturnedMapMergeTool.DataMergeTools
                     }
 
                     dataItem.CopyMap.ApplyPositionShift(node.Point);
+
+                    if (dataItem.CopyMap.IsOutputMapBorder(node.Point))
+                    {
+                        continue;
+                    }
+
                     content.Nodes.Add(node);
                 }
             }

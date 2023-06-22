@@ -43,6 +43,12 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
                     animalSpawnPoint.Type = (byte)(animalSpawnPoint.Type + startTableId);
                     dataItem.CopyMap.ApplyPositionShift(animalSpawnPoint.Point);
+
+                    if (dataItem.CopyMap.IsOutputMapBorder(animalSpawnPoint.Point))
+                    {
+                        continue;
+                    }
+
                     content.SpawnPoints.Add(animalSpawnPoint);
                 }
             }

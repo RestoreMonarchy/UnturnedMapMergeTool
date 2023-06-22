@@ -52,6 +52,11 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                     flagItem.CopyMap.ApplyPositionShift(flag.Point);
 
+                    if (flagItem.CopyMap.IsOutputMapBorder(flag.Point))
+                    {
+                        continue;
+                    }
+
                     flagsContent.Flags.Add(flag);
                     flagsDataContent.FlagsData.Add(flagData);
                 }

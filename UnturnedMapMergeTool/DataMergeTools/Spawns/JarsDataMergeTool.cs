@@ -40,6 +40,12 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
                     };
 
                     dataItem.CopyMap.ApplyPositionShift(shiftedItemSpawnpoint.Point);
+
+                    if (dataItem.CopyMap.IsOutputMapBorder(shiftedItemSpawnpoint.Point))
+                    {
+                        continue;
+                    }
+
                     shiftedItemSpawnpoint.Type = dataItem.CopyMap.GetShiftedItemType(shiftedItemSpawnpoint.Type);
 
                     if (!Regions.tryGetCoordinate(shiftedItemSpawnpoint.Point, out byte regionX, out byte regionY))

@@ -45,6 +45,12 @@ namespace UnturnedMapMergeTool.DataMergeTools.Spawns
 
                     vehicleSpawnpoint.Type = (byte)(vehicleSpawnpoint.Type + startTableId);
                     dataItem.CopyMap.ApplyPositionShift(vehicleSpawnpoint.Point);
+
+                    if (dataItem.CopyMap.IsOutputMapBorder(vehicleSpawnpoint.Point))
+                    {
+                        continue;
+                    }
+
                     content.Spawnpoints.Add(vehicleSpawnpoint);
                 }
             }
