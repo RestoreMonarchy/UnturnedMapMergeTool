@@ -25,7 +25,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
         public override void CombineAndSaveData(OutputMap outputMap)
         {
             byte flagsSaveVersion = 4;
-            byte flagsDataSaveVersion = 4;
+            byte flagsDataSaveVersion = 5;
 
             FlagsDataContent flagsContent = new(flagsSaveVersion, 0);
             FlagsDataDataContent flagsDataContent = new(flagsDataSaveVersion, 0);
@@ -37,7 +37,8 @@ namespace UnturnedMapMergeTool.DataMergeTools
 
                 if (flagDataItem.Content.FlagsData.Count != flagItem.Content.Flags.Count)
                 {
-                    throw new Exception("Flags data count and flags count should be the same");
+                    flagDataItem.Content.FlagsData.RemoveAt(FlagsData.Count - 1);
+                    //throw new Exception("Flags data count and flags count should be the same");
                 }
 
                 for (int i = 0; i < flagItem.Content.Count; i++)

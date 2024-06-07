@@ -36,6 +36,7 @@ namespace UnturnedMapMergeTool.Models.Contents
                 river.writeByte(flagData.MaxZombies);
                 river.writeBoolean(flagData.SpawnZombies);
                 river.writeBoolean(flagData.HyperAgro);
+                river.writeInt32(flagData.MaxBossZombies);
             }
 
             river.closeRiver();
@@ -75,7 +76,12 @@ namespace UnturnedMapMergeTool.Models.Contents
                 {
                     flagData.HyperAgro = river.readBoolean();
                 }
-                
+
+                flagData.MaxBossZombies = -1;
+                if (content.SaveDataVersion >= 5)
+                {
+                    flagData.MaxBossZombies = river.readInt32();
+                }                
             }
 
             river.closeRiver();

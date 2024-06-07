@@ -12,5 +12,6 @@ namespace UnturnedMapMergeTool.Models.Contents.FlagsData
         public byte MaxZombies { get; set; }
         public bool SpawnZombies { get; set; }
         public bool HyperAgro { get; set; }
+        public int MaxBossZombies { get; set; }
     }
 }

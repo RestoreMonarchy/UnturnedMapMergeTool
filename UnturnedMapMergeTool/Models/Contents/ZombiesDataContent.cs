@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using UnturnedMapMergeTool.Models.Contents.Zombies;
@@ -81,6 +82,11 @@ namespace UnturnedMapMergeTool.Models.Contents
                 block.readSteamID();
             }
 
+            if (content.SaveDataVersion >= 10)
+            {
+                block.readInt32();
+            }
+
             content.Tables = new();
 
             // TODO: Add support for SavedataVersion < 2
@@ -91,6 +97,11 @@ namespace UnturnedMapMergeTool.Models.Contents
                 ZombieTableData zombieTable = new();
                 content.Tables.Add(zombieTable);
 
+                if (content.SaveDataVersion >= 10)
+                {
+                    block.readInt32();
+                }
+                
                 zombieTable.Color = block.readColor();
                 zombieTable.Name = block.readString();
                 zombieTable.IsMega = block.readBoolean();
@@ -130,9 +141,9 @@ namespace UnturnedMapMergeTool.Models.Contents
                     zombieTable.DifficultyGuid = block.readString();
                 }
 
-                zombieTable.Slots = new ZombieSlotData[4];
                 zombieTable.SlotsCount = block.readByte();
-
+                zombieTable.Slots = new ZombieSlotData[zombieTable.SlotsCount];
+                
                 for (byte j = 0; j < zombieTable.SlotsCount; j++)
                 {
                     ZombieSlotData zombieSlot = new();

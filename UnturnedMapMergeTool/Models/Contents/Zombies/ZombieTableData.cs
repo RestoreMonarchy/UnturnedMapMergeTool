@@ -9,6 +9,7 @@ namespace UnturnedMapMergeTool.Models.Contents.Zombies
 {
     public class ZombieTableData
     {
+        public Guid TableUniqueId { get; set; }
         public Color Color { get; set; }
         public string Name { get; set; }
         public bool IsMega { get; set; }
