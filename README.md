@@ -2,6 +2,10 @@
 Program for merging multiple unturned maps into one.  
 Work in progress
 
+## WARNING
+The tool is hard to use and it's not always kept up-to-date with the current version of Unturned.  
+If you need help merging some maps please contact me through discord. My discord tag is: mcrow
+
 ### Example maps created using this tool
 * [Triple Classic (Peyukton)](https://steamcommunity.com/sharedfiles/filedetails/?id=2867004062) by [adLay](https://steamcommunity.com/profiles/76561199059647240)
 * [AMIO (All Maps in One)](https://steamcommunity.com/workshop/filedetails/?id=2877846948) by [landsQuid](https://steamcommunity.com/id/BearFlewOverTheOcean)
