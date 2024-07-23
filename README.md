@@ -1,18 +1,19 @@
-## Unturned Map Merge Tool
-Program for merging multiple unturned maps into one.  
-Work in progress
+# Unturned Map Merge Tool
+Program for merging multiple unturned maps into one. 
 
-## WARNING
+## Information
 The tool is hard to use and it's not always kept up-to-date with the current version of Unturned.  
-If you need help merging some maps please contact me through discord. My discord tag is: mcrow
+We do not provide any documentation or instructions on how to use the tool.  
 
-### Example maps created using this tool
+We offer to merge maps for you for a small fee. If you are interested check out our offer at: [restoremonarchy.com/services/map-merge](https://restoremonarchy.com/services/map-merge)
+
+## Some maps created using this tool
 * [Triple Classic (Peyukton)](https://steamcommunity.com/sharedfiles/filedetails/?id=2867004062) by [adLay](https://steamcommunity.com/profiles/76561199059647240)
 * [AMIO (All Maps in One)](https://steamcommunity.com/workshop/filedetails/?id=2877846948) by [landsQuid](https://steamcommunity.com/id/BearFlewOverTheOcean)
 * [Trilogy (Triple Classic Remastered)](https://steamcommunity.com/sharedfiles/filedetails/?id=2876376295) by [landsQuid](https://steamcommunity.com/id/BearFlewOverTheOcean)
 * [Anomaly](https://steamcommunity.com/workshop/filedetails/?id=2880116065) by [landsQuid](https://steamcommunity.com/id/BearFlewOverTheOcean)
 
-### Currently Mergeable Files
+## Currently Mergeable Files
 Landscape merge works by renaming and copying the files from the original map.  
 All of the `.dat` files I'm reading into objects, shifting the positions inside the files, combining and then saving into the output map directory.
 
@@ -45,6 +46,7 @@ All of the `.dat` files I'm reading into objects, shifting the positions inside 
 * Objects.dat
 
 ### Example board for the insane size map  
-This is an example board used to get right coordinates for the map you want to be generated from another  
+This is an example board used to get right coordinates for the map you want to be generated from another.
+
 ![](UnturnedMapMergeTool.jpg)
 
