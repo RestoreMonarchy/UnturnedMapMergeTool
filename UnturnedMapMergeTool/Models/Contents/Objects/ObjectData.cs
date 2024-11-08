@@ -14,5 +14,6 @@ namespace UnturnedMapMergeTool.Models.Contents.Objects
         public uint InstanceId { get; set; }
         public Guid CustomMaterialOverride { get; set; }
         public int MaterialIndexOverride { get; set; }
+        public bool IsOwnedCullingVolumeAllowed { get; set; }
     }
 }

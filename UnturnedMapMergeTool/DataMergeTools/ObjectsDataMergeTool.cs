@@ -21,7 +21,7 @@ namespace UnturnedMapMergeTool.DataMergeTools
         public override void CombineAndSaveData(OutputMap outputMap)
         {
             uint availableInstanceId = 0;
-            byte saveDataVersion = 11;
+            byte saveDataVersion = 12;
             CSteamID steamID = null;
             ObjectDataContent content = new(saveDataVersion, steamID, availableInstanceId);
 

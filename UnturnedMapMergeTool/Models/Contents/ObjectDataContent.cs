@@ -71,6 +71,7 @@ namespace UnturnedMapMergeTool.Models.Contents
                         river.writeUInt32(objectData.InstanceId);
                         river.writeGUID(objectData.CustomMaterialOverride);
                         river.writeInt32(objectData.MaterialIndexOverride);
+                        river.writeBoolean(objectData.IsOwnedCullingVolumeAllowed);
                     }
                 }
             }
@@ -163,6 +164,14 @@ namespace UnturnedMapMergeTool.Models.Contents
                         {
                             objectData.CustomMaterialOverride = river.readGUID();
                             objectData.MaterialIndexOverride =  river.readInt32();
+                        }
+
+                        if (content.SaveDataVersion >= 12)
+                        {
+                            objectData.IsOwnedCullingVolumeAllowed = river.readBoolean();
+                        } else
+                        {
+                            objectData.IsOwnedCullingVolumeAllowed = true;
                         }
 
                         region.Objects.Add(objectData);
