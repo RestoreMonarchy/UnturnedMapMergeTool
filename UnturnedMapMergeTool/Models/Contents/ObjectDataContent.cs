@@ -50,7 +50,7 @@ namespace UnturnedMapMergeTool.Models.Contents
         public void SaveToFile(string fileNamePath)
         {
             River river = new(fileNamePath);
-            river.writeByte(11);
+            river.writeByte(SaveDataVersion);
             river.writeUInt32(AvailableInstanceId);
 
             for (byte i = 0; i < Regions.WORLD_SIZE; i++)
