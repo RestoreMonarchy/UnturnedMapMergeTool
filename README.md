@@ -5,7 +5,11 @@ Program for merging multiple unturned maps into one.
 The tool is hard to use and it's not always kept up-to-date with the current version of Unturned.  
 We do not provide any documentation or instructions on how to use the tool.  
 
-We offer to merge maps for you for a small fee. If you are interested check out our offer at: [restoremonarchy.com/services/map-merge](https://restoremonarchy.com/services/map-merge)
+### We offer to merge maps for you for a small fee.
+Join our Discord and create a ticket there. Provide a list of maps you want to merge and info how to arrange them. We charge **$30 USD fee** per merge. 
+We only merge the maps using our tool, but we don't finish the maps. In order to make the map playable, you need to finish it yourself or hire someone to do it for you.
+
+[Discord Invite Link](https://discord.com/invite/KZv8VSKQqQ)
 
 ## Some maps created using this tool
 * [Triple Classic (Peyukton)](https://steamcommunity.com/sharedfiles/filedetails/?id=2867004062) by [adLay](https://steamcommunity.com/profiles/76561199059647240)
